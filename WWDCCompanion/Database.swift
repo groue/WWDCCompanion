@@ -32,9 +32,9 @@ func setupDatabase(_ application: UIApplication) throws {
     
     var migrator = DatabaseMigrator()
     
-    migrator.registerMigration("createPersons") { db in
+    migrator.registerMigration("createWWDCSessions") { db in
         
-        try db.create(table: "session") { t in
+        try db.create(table: "sessions") { t in
             t.column("id", .integer).primaryKey()
             t.column("year", .integer).notNull()
             t.column("number", .integer).notNull()
@@ -52,6 +52,26 @@ func setupDatabase(_ application: UIApplication) throws {
             
             t.uniqueKey(["year", "number"])
         }
+        
+        try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
+            t.content = "sessions"
+            t.column("title")
+            t.column("transcript")
+        }
+        
+        // Triggers to keep the FTS index up to date.
+        // See https://sqlite.org/fts5.html#external_content_tables
+        try db.execute(
+            "CREATE TRIGGER sessions_ai AFTER INSERT ON sessions BEGIN " +
+                "INSERT INTO fullTextSessions(rowid, title, c) VALUES (new.rowid, new.title, new.transcript); " +
+                "END; " +
+                "CREATE TRIGGER sessions_ad AFTER DELETE ON sessions BEGIN " +
+                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, c) VALUES('delete', old.new.rowid, old.title, old.transcript); " +
+                "END; " +
+                "CREATE TRIGGER sessions_au AFTER UPDATE ON sessions BEGIN " +
+                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript) VALUES('delete', old.new.rowid, old.title, old.transcript); " +
+                "INSERT INTO fullTextSessions(rowid, title, c) VALUES (new.new.rowid, new.title, new.transcript); " +
+            "END;")
     }
     
     try migrator.migrate(dbQueue)
