@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB563915CFFEAD98D4AC409 /* Pods_WWDCCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */; };
 		566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */; };
 		566D9A0F1DB0AE0F009CEA56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */; };
 		566D9A121DB0AE0F009CEA56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A101DB0AE0F009CEA56 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 		566D9A3B1DB0AEC3009CEA56 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A3A1DB0AEC3009CEA56 /* Database.swift */; };
 		566D9A8F1DB0B304009CEA56 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; };
 		566D9A901DB0B304009CEA56 /* GRDBCustomSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		566D9A9A1DB0F19E009CEA56 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A991DB0F19E009CEA56 /* Session.swift */; };
+		566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +187,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WWDCCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 		566D9A091DB0AE0F009CEA56 /* WWDCCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDCCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +204,9 @@
 		566D9A2E1DB0AE0F009CEA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		566D9A3A1DB0AEC3009CEA56 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GRDB.xcodeproj; path = GRDB/GRDB.xcodeproj; sourceTree = SOURCE_ROOT; };
+		566D9A991DB0F19E009CEA56 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWDC2016.swift; sourceTree = "<group>"; };
+		EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				566D9A8F1DB0B304009CEA56 /* GRDBCustomSQLite.framework in Frameworks */,
+				3FB563915CFFEAD98D4AC409 /* Pods_WWDCCompanion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +236,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E9E394788858180727DA47F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */,
+				EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		566D9A001DB0AE0F009CEA56 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +252,8 @@
 				566D9A201DB0AE0F009CEA56 /* WWDCCompanionTests */,
 				566D9A2B1DB0AE0F009CEA56 /* WWDCCompanionUITests */,
 				566D9A0A1DB0AE0F009CEA56 /* Products */,
+				2E9E394788858180727DA47F /* Pods */,
+				EACA5C496B81AC48146252AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,14 +270,16 @@
 		566D9A0B1DB0AE0F009CEA56 /* WWDCCompanion */ = {
 			isa = PBXGroup;
 			children = (
-				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
 				566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */,
 				566D9A3A1DB0AEC3009CEA56 /* Database.swift */,
+				566D9A991DB0F19E009CEA56 /* Session.swift */,
 				566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */,
+				566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */,
 				566D9A101DB0AE0F009CEA56 /* Main.storyboard */,
 				566D9A131DB0AE0F009CEA56 /* Assets.xcassets */,
 				566D9A151DB0AE0F009CEA56 /* LaunchScreen.storyboard */,
 				566D9A181DB0AE0F009CEA56 /* Info.plist */,
+				566D9AB21DB0F542009CEA56 /* Frameworks */,
 			);
 			path = WWDCCompanion;
 			sourceTree = "<group>";
@@ -304,6 +326,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		566D9AB21DB0F542009CEA56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EACA5C496B81AC48146252AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,10 +349,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 566D9A311DB0AE0F009CEA56 /* Build configuration list for PBXNativeTarget "WWDCCompanion" */;
 			buildPhases = (
+				C1E9004D8901B6D94F375DA6 /* [CP] Check Pods Manifest.lock */,
 				566D9A051DB0AE0F009CEA56 /* Sources */,
 				566D9A061DB0AE0F009CEA56 /* Frameworks */,
 				566D9A071DB0AE0F009CEA56 /* Resources */,
 				566D9A931DB0B304009CEA56 /* Embed Frameworks */,
+				31CB3D48999AA46314AE197B /* [CP] Embed Pods Frameworks */,
+				B97F64A3E6242C9F0554622F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -567,13 +608,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31CB3D48999AA46314AE197B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B97F64A3E6242C9F0554622F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1E9004D8901B6D94F375DA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		566D9A051DB0AE0F009CEA56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566D9A9A1DB0F19E009CEA56 /* Session.swift in Sources */,
 				566D9A3B1DB0AEC3009CEA56 /* Database.swift in Sources */,
 				566D9A0F1DB0AE0F009CEA56 /* ViewController.swift in Sources */,
+				566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */,
 				566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,8 +823,8 @@
 		};
 		566D9A321DB0AE0F009CEA56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;
@@ -746,8 +837,8 @@
 		};
 		566D9A331DB0AE0F009CEA56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;

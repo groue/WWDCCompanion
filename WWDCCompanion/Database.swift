@@ -39,7 +39,7 @@ func setupDatabase(_ application: UIApplication) throws {
             t.column("year", .integer).notNull()
             t.column("number", .integer).notNull()
             t.column("title", .text).notNull().check { length($0) > 0 }
-            t.column("topic", .text).notNull().check { length($0) > 0 }
+            t.column("collection", .text).notNull().check { length($0) > 0 }
             t.column("iOS", .boolean).notNull()
             t.column("macOS", .boolean).notNull()
             t.column("watchOS", .boolean).notNull()

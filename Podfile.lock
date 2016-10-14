@@ -1,0 +1,12 @@
+PODS:
+  - Fuzi (1.0.0)
+
+DEPENDENCIES:
+  - Fuzi (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  Fuzi: e88177b7cfdf3aa2b828c096c73551232a7f5c72
+
+PODFILE CHECKSUM: 2a8ededa2c0415bbcf3fb73d5715ed920cf62e00
+
+COCOAPODS: 1.1.0.rc.3
