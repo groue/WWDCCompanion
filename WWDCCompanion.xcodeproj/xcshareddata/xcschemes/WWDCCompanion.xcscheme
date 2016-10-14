@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0800"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "#&#10;# Sync USER Configuration Files&#10;#&#10;# Last Updated: 2016-05-31 (A)&#10;#&#10;# License: MIT License&#10;# https://github.com/swiftlyfalling/SQLiteLib/blob/master/LICENSE&#10;&#10;#######################################################&#10;#                   PROJECT PATHS&#10;#  !! MODIFY THESE TO MATCH YOUR PROJECT HIERARCHY !!&#10;#######################################################&#10;&#10;# The path to the folder containing GRDB.xcodeproj:&#10;GRDB_SOURCE_PATH=&quot;${PROJECT_DIR}/GRDB&quot;&#10;&#10;# The path to your custom &quot;SQLiteLib-USER.xcconfig&quot;:&#10;SQLITELIB_XCCONFIG_USER_PATH=&quot;${PROJECT_DIR}/SQLiteLib-USER.xcconfig&quot;&#10;&#10;# The path to your custom &quot;GRDBCustomSQLite-USER.xcconfig&quot;:&#10;CUSTOMSQLITE_XCCONFIG_USER_PATH=&quot;${PROJECT_DIR}/GRDBCustomSQLite-USER.xcconfig&quot;&#10;&#10;# The path to your custom &quot;GRDBCustomSQLite-USER.h&quot;:&#10;CUSTOMSQLITE_H_USER_PATH=&quot;${PROJECT_DIR}/GRDBCustomSQLite-USER.h&quot;&#10;&#10;#######################################################&#10;#&#10;#######################################################&#10;&#10;&#10;if [ ! -d &quot;$GRDB_SOURCE_PATH&quot; ];&#10;then&#10;echo &quot;error: Path to GRDB source (GRDB_SOURCE_PATH) missing/incorrect: $GRDB_SOURCE_PATH&quot;&#10;exit 1&#10;fi&#10;&#10;SyncFileChanges () {&#10;    SOURCE=$1&#10;    DESTINATIONPATH=$2&#10;    DESTINATIONFILENAME=$3&#10;    DESTINATION=&quot;${DESTINATIONPATH}/${DESTINATIONFILENAME}&quot;&#10;    &#10;    if [ ! -f &quot;$SOURCE&quot; ];&#10;    then&#10;    echo &quot;error: Source file missing: $SOURCE&quot;&#10;    exit 1&#10;    fi&#10;    &#10;    rsync -a &quot;$SOURCE&quot; &quot;$DESTINATION&quot;&#10;}&#10;&#10;SyncFileChanges $SQLITELIB_XCCONFIG_USER_PATH &quot;${GRDB_SOURCE_PATH}/SQLiteCustom/src&quot; &quot;SQLiteLib-USER.xcconfig&quot;&#10;SyncFileChanges $CUSTOMSQLITE_XCCONFIG_USER_PATH &quot;${GRDB_SOURCE_PATH}/SQLiteCustom&quot; &quot;GRDBCustomSQLite-USER.xcconfig&quot;&#10;SyncFileChanges $CUSTOMSQLITE_H_USER_PATH &quot;${GRDB_SOURCE_PATH}/SQLiteCustom&quot; &quot;GRDBCustomSQLite-USER.h&quot;&#10;&#10;echo &quot;Finished syncing&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "566D9A081DB0AE0F009CEA56"
+                     BuildableName = "WWDCCompanion.app"
+                     BlueprintName = "WWDCCompanion"
+                     ReferencedContainer = "container:WWDCCompanion.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
