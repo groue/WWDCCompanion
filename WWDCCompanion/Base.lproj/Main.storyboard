@@ -10,7 +10,7 @@
         <!--WWDC Companion-->
         <scene sceneID="pNB-EK-BRf">
             <objects>
-                <tableViewController id="3vs-JU-58m" customClass="SessionsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SessionsTableViewController" id="3vs-JU-58m" customClass="SessionsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVl-Pn-wKz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,6 +78,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDl-cP-fyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="121.88905547226388"/>
+        </scene>
+        <!--Search Results Table View Controller-->
+        <scene sceneID="CXW-43-JJi">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchResultsTableViewController" id="jjy-kt-SNr" customClass="SearchResultsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="219" sectionHeaderHeight="28" sectionFooterHeight="28" id="xX0-uy-VZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" rowHeight="219" id="ZSJ-uX-uDN" customClass="SearchResultTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="219"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ZSJ-uX-uDN" id="cZs-5P-9wt">
+                                    <frame key="frameInset" width="375" height="218"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RL1-6g-RTq">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7v-g1-iSb">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at3-um-wXj">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snippet" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-TZ-stv">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RL1-6g-RTq" secondAttribute="trailing" id="2xw-ER-SZd"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="L7v-g1-iSb" secondAttribute="leading" id="45G-34-gng"/>
+                                        <constraint firstItem="at3-um-wXj" firstAttribute="baseline" secondItem="L7v-g1-iSb" secondAttribute="baseline" id="Bni-SN-RdN"/>
+                                        <constraint firstItem="zAo-TZ-stv" firstAttribute="leading" secondItem="cZs-5P-9wt" secondAttribute="leadingMargin" id="Ggt-IP-pMF"/>
+                                        <constraint firstItem="zAo-TZ-stv" firstAttribute="top" secondItem="RL1-6g-RTq" secondAttribute="bottom" constant="8" symbolic="YES" id="LVE-tm-Cdh"/>
+                                        <constraint firstItem="RL1-6g-RTq" firstAttribute="top" secondItem="L7v-g1-iSb" secondAttribute="bottom" id="Wpv-DO-egN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zAo-TZ-stv" secondAttribute="trailing" id="cIH-8r-dYc"/>
+                                        <constraint firstItem="RL1-6g-RTq" firstAttribute="leading" secondItem="cZs-5P-9wt" secondAttribute="leadingMargin" id="caF-AB-vJE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zAo-TZ-stv" secondAttribute="bottom" id="lY2-S7-WMd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="at3-um-wXj" secondAttribute="trailing" id="lnr-6I-Izy"/>
+                                        <constraint firstAttribute="topMargin" secondItem="L7v-g1-iSb" secondAttribute="top" id="mgH-Wa-qFL"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="numberLabel" destination="L7v-g1-iSb" id="7Fe-Zi-yfj"/>
+                                    <outlet property="snippetLabel" destination="zAo-TZ-stv" id="1v7-ay-LUO"/>
+                                    <outlet property="titleLabel" destination="RL1-6g-RTq" id="JTQ-HE-y8t"/>
+                                    <outlet property="yearLabel" destination="at3-um-wXj" id="xEm-77-ube"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jjy-kt-SNr" id="jWG-GR-o2n"/>
+                            <outlet property="delegate" destination="jjy-kt-SNr" id="gdk-3X-wDg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eF-RU-Yp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.8" y="121.88905547226388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VaP-25-zIr">

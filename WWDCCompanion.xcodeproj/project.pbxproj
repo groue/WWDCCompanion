@@ -21,6 +21,8 @@
 		566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2A1DB1EBD4009CEA56 /* Session.swift */; };
 		566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */; };
 		566D9B331DB1EF1C009CEA56 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */; };
+		566D9B361DB21895009CEA56 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */; };
+		566D9B381DB22370009CEA56 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B371DB22370009CEA56 /* SearchResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +210,8 @@
 		566D9B2A1DB1EBD4009CEA56 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		566D9B371DB22370009CEA56 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */,
+				566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 		566D9B311DB1EF05009CEA56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				566D9B371DB22370009CEA56 /* SearchResultTableViewCell.swift */,
 				566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */,
 			);
 			path = Views;
@@ -698,9 +704,11 @@
 			files = (
 				566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */,
 				566D9B331DB1EF1C009CEA56 /* SessionTableViewCell.swift in Sources */,
+				566D9B381DB22370009CEA56 /* SearchResultTableViewCell.swift in Sources */,
 				566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */,
 				566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */,
 				566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */,
+				566D9B361DB21895009CEA56 /* SearchResultsTableViewController.swift in Sources */,
 				566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

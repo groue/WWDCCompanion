@@ -10,21 +10,31 @@ import UIKit
 import GRDBCustomSQLite
 
 class SessionsTableViewController: UITableViewController {
-    @IBOutlet var downloadBarButtonItem: UIBarButtonItem!
-    var sessionsController: FetchedRecordsController<Session>!
+    @IBOutlet private var downloadBarButtonItem: UIBarButtonItem!
+    private var sessionsController: FetchedRecordsController<Session>!
+    private var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 62
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
+        // sessions
         let request = Session.order(Column("year").desc, Column("number").asc)
-        sessionsController = FetchedRecordsController<Session>(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
         sessionsController.trackChanges { [unowned self] _ in
             self.tableView.reloadData()
         }
         sessionsController.performFetch()
+        
+        // tableview autolayout
+        tableView.estimatedRowHeight = 62
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // search controller
+        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "SearchResultsTableViewController") as! SearchResultsTableViewController
+        searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchResultsUpdater = searchResultsController
+        tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,21 +61,22 @@ class SessionsTableViewController: UITableViewController {
         return cell
     }
     
-    func configure(cell: SessionTableViewCell, at indexPath: IndexPath) {
+    private func configure(cell: SessionTableViewCell, at indexPath: IndexPath) {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
         cell.numberLabel.text = String(format:NSLocalizedString("Session %d", comment: ""), session.number)
         cell.yearLabel.text = "\(session.year)"
     }
-
+    
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
-    // MARK: - Sessions
+    // MARK: - Download
     
-    @IBAction func download() {
+    @IBAction private func download() {
         downloadBarButtonItem.isEnabled = false
         let progress = WWDC2016.download { [weak self] error in
             guard let strongSelf = self else { return }
@@ -74,11 +85,11 @@ class SessionsTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
             }
-            strongSelf.tableView.tableHeaderView = nil
+            strongSelf.navigationItem.titleView = nil
             strongSelf.downloadBarButtonItem.isEnabled = true
         }
         let progressView = UIProgressView(frame: .zero)
         progressView.observedProgress = progress
-        tableView.tableHeaderView = progressView
+        navigationItem.titleView = progressView
     }
 }
