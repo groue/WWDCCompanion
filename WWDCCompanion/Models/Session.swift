@@ -16,6 +16,16 @@ class Session : Record {
     let videoURL: URL
     let presentationURL: URL?
     
+    var focuses: String {
+        var focuses: [String] = []
+        if iOS { focuses.append("iOS") }
+        if macOS { focuses.append("macOS") }
+        if tvOS { focuses.append("tvOS") }
+        if watchOS { focuses.append("watchOS") }
+        return focuses.joined(separator: ", ")
+
+    }
+    
     init(year: Int, number: Int, collection: String, title: String, description: String, transcript: String, iOS: Bool, macOS: Bool, tvOS: Bool, watchOS: Bool, sessionURL: URL, imageURL: URL, videoURL: URL, presentationURL: URL?) {
         self.year = year
         self.number = number

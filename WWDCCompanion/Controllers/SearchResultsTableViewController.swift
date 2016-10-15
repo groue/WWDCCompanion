@@ -21,6 +21,12 @@ class SessionWithSnippet : Session {
 class SearchResultsTableViewController: UITableViewController {
     private var sessionsController: FetchedRecordsController<SessionWithSnippet>!
     
+    var selectedSession: Session? {
+        return tableView
+            .indexPathForSelectedRow
+            .flatMap { sessionsController.record(at: $0) }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,13 +76,7 @@ class SearchResultsTableViewController: UITableViewController {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
         cell.sessionImageURL = session.imageURL
-        
-        var focuses: [String] = []
-        if session.iOS { focuses.append("iOS") }
-        if session.macOS { focuses.append("macOS") }
-        if session.tvOS { focuses.append("tvOS") }
-        if session.watchOS { focuses.append("watchOS") }
-        cell.focusesLabel.text = focuses.joined(separator: ", ")
+        cell.focusesLabel.text = session.focuses
         
         let font = cell.snippetLabel.font ?? UIFont.systemFont(ofSize: 17)
         let htmlSnippet = "<style>span{font-family: \"\(font.familyName)\"; font-size: \(font.pointSize)px; color: #888;} b{font-weight: normal; color: #000;}</style><span>\(session.snippet)</span>"
@@ -90,6 +90,12 @@ class SearchResultsTableViewController: UITableViewController {
         {
             cell.snippetLabel.attributedText = attributedSnippet
         }
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presentingViewController?.performSegue(withIdentifier: "ShowSession", sender: self)
     }
 }
 

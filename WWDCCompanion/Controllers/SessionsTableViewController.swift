@@ -35,6 +35,10 @@ class SessionsTableViewController: UITableViewController {
         searchController.searchResultsUpdater = searchResultsController
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
+        
+        // back button
+        self.navigationItem.title = NSLocalizedString("WWDC Companion", comment: "")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sessions", comment: ""), style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +46,11 @@ class SessionsTableViewController: UITableViewController {
         
         if sessionsController.sections.count == 0 || sessionsController.sections[0].numberOfRecords == 0 {
             download()
+        }
+        
+        // necessary for automatic row deselection in the search results
+        if searchController.isActive {
+            searchController.searchResultsController?.viewWillAppear(animated)
         }
     }
     
@@ -65,19 +74,31 @@ class SessionsTableViewController: UITableViewController {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
         cell.sessionImageURL = session.imageURL
-        
-        var focuses: [String] = []
-        if session.iOS { focuses.append("iOS") }
-        if session.macOS { focuses.append("macOS") }
-        if session.tvOS { focuses.append("tvOS") }
-        if session.watchOS { focuses.append("watchOS") }
-        cell.focusesLabel.text = focuses.joined(separator: ", ")
+        cell.focusesLabel.text = session.focuses
     }
     
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowSession", sender: self)
+    }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSession" {
+            // Pushed session depends on the sender: self or the search results
+            let session: Session?
+            switch sender {
+            case let vc as SearchResultsTableViewController:
+                session = vc.selectedSession
+            default:
+                session = tableView
+                    .indexPathForSelectedRow
+                    .flatMap { sessionsController.record(at: $0) }
+            }
+            (segue.destination as! SessionViewController).session = session
+        }
     }
     
     // MARK: - Download

@@ -16,7 +16,9 @@ extension XMLElement {
 }
 
 struct ScrapingError : Error {
-    
+    var localizedDescription: String {
+        return NSLocalizedString("Scraping Error", comment: "")
+    }
 }
 
 struct WWDC2016 {
@@ -46,13 +48,6 @@ struct WWDC2016 {
                 for parsedCollection in try page.collections() {
                     for parsedSessionFromListPage in parsedCollection.sessions {
                         let sessionURL = parsedSessionFromListPage.sessionURL
-                        guard let number = Int(sessionURL.lastPathComponent) else {
-                            progress.cancel()
-                            DispatchQueue.main.async {
-                                completion(ScrapingError())
-                            }
-                            return
-                        }
                         let sessionTask = session.dataTask(with: sessionURL) { (data, response, error) in
                             guard let data = data else {
                                 progress.cancel()
@@ -71,7 +66,7 @@ struct WWDC2016 {
                                         collection: parsedCollection.collection,
                                         title: parsedSessionFromSessionPage.title,
                                         description: parsedSessionFromSessionPage.description,
-                                        transcript: parsedSessionFromSessionPage.description,
+                                        transcript: parsedSessionFromSessionPage.transcript,
                                         iOS: parsedSessionFromListPage.iOS,
                                         macOS: parsedSessionFromListPage.macOS,
                                         tvOS: parsedSessionFromListPage.tvOS,

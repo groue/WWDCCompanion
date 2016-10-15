@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FB563915CFFEAD98D4AC409 /* Pods_WWDCCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */; };
+		56071A061DB27B1400CA6E47 /* session.html.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 56071A051DB27B1400CA6E47 /* session.html.mustache */; };
 		566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */; };
 		566D9A121DB0AE0F009CEA56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A101DB0AE0F009CEA56 /* Main.storyboard */; };
 		566D9A141DB0AE0F009CEA56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A131DB0AE0F009CEA56 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		566D9B361DB21895009CEA56 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */; };
 		566D9B381DB22370009CEA56 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B371DB22370009CEA56 /* SearchResultTableViewCell.swift */; };
 		566D9B3A1DB253E9009CEA56 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B391DB253E9009CEA56 /* ImageCache.swift */; };
+		566D9B3E1DB26A87009CEA56 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B3D1DB26A87009CEA56 /* SessionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +195,7 @@
 /* Begin PBXFileReference section */
 		1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WWDCCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		56071A051DB27B1400CA6E47 /* session.html.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = session.html.mustache; sourceTree = "<group>"; };
 		566D9A091DB0AE0F009CEA56 /* WWDCCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDCCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566D9A111DB0AE0F009CEA56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		566D9B371DB22370009CEA56 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		566D9B391DB253E9009CEA56 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		566D9B3D1DB26A87009CEA56 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,8 +348,9 @@
 		566D9B271DB1EBD4009CEA56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */,
 				566D9B351DB21895009CEA56 /* SearchResultsTableViewController.swift */,
+				566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */,
+				566D9B3D1DB26A87009CEA56 /* SessionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				566D9A131DB0AE0F009CEA56 /* Assets.xcassets */,
 				566D9A151DB0AE0F009CEA56 /* LaunchScreen.storyboard */,
 				566D9A101DB0AE0F009CEA56 /* Main.storyboard */,
+				56071A051DB27B1400CA6E47 /* session.html.mustache */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56071A061DB27B1400CA6E47 /* session.html.mustache in Resources */,
 				566D9A171DB0AE0F009CEA56 /* LaunchScreen.storyboard in Resources */,
 				566D9A141DB0AE0F009CEA56 /* Assets.xcassets in Resources */,
 				566D9A121DB0AE0F009CEA56 /* Main.storyboard in Resources */,
@@ -708,6 +715,7 @@
 				566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */,
 				566D9B331DB1EF1C009CEA56 /* SessionTableViewCell.swift in Sources */,
 				566D9B381DB22370009CEA56 /* SearchResultTableViewCell.swift in Sources */,
+				566D9B3E1DB26A87009CEA56 /* SessionViewController.swift in Sources */,
 				566D9B3A1DB253E9009CEA56 /* ImageCache.swift in Sources */,
 				566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */,
 				566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */,

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="83j-0T-6EX" id="m3O-N1-fU1">
-                                    <frame key="frameInset" width="375" height="102"/>
+                                    <frame key="frameInset" width="375" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-md-xzB">
@@ -80,26 +80,46 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="downloadBarButtonItem" destination="TYP-vC-NP7" id="zlu-Qe-OR3"/>
+                        <segue destination="PjN-4i-JGP" kind="show" identifier="ShowSession" id="zR7-6r-7Nv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDl-cP-fyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="121.88905547226388"/>
         </scene>
+        <!--Session View Controller-->
+        <scene sceneID="xzD-If-sHL">
+            <objects>
+                <viewController id="PjN-4i-JGP" customClass="SessionViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9BU-CI-bgf"/>
+                        <viewControllerLayoutGuide type="bottom" id="TfM-co-kC0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qL4-br-jfM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hj8-ce-FC9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzA-Pi-GYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.8" y="880.20989505247383"/>
+        </scene>
         <!--Search Results Table View Controller-->
         <scene sceneID="CXW-43-JJi">
             <objects>
                 <tableViewController storyboardIdentifier="SearchResultsTableViewController" id="jjy-kt-SNr" customClass="SearchResultsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="219" sectionHeaderHeight="28" sectionFooterHeight="28" id="xX0-uy-VZJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" id="xX0-uy-VZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" rowHeight="215" id="ckk-bE-uEX" customClass="SearchResultTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="215"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" rowHeight="105" id="ckk-bE-uEX" customClass="SearchResultTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ckk-bE-uEX" id="Lcw-R9-aKF">
-                                    <frame key="frameInset" width="375" height="214"/>
+                                    <frame key="frameInset" width="375" height="105"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jli-j9-PA5">
