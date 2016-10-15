@@ -11,4 +11,4 @@ It shows how to:
 
 - **Perform full-text search** in an SQLite database with [GRDB.swift](http://github.com/groue/GRDB.swift).
 - **Render HTML templates** with [GRMustache.swift](https://github.com/groue/GRMustache.swift).
-
+- **Parse HTML** with [Fuzi](https://github.com/cezheng/Fuzi).
