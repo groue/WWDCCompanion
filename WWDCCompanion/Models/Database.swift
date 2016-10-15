@@ -44,9 +44,10 @@ func setupDatabase(_ application: UIApplication) throws {
             t.column("transcript", .text).notNull().check { length($0) > 0 }
             t.column("iOS", .boolean).notNull()
             t.column("macOS", .boolean).notNull()
-            t.column("watchOS", .boolean).notNull()
             t.column("tvOS", .boolean).notNull()
+            t.column("watchOS", .boolean).notNull()
             t.column("sessionURL", .text).notNull()
+            t.column("imageURL", .text).notNull()
             t.column("videoURL", .text).notNull()
             t.column("presentationURL", .text)
         }

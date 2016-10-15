@@ -9,7 +9,7 @@
 import UIKit
 
 class SessionTableViewCell: UITableViewCell {
+    @IBOutlet weak var sessionImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var focusesLabel: UILabel!
 }

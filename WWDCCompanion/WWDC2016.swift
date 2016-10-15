@@ -67,16 +67,17 @@ struct WWDC2016 {
                                 try dbQueue.inDatabase { db in
                                     try Session(
                                         year: 2016,
-                                        number: number,
+                                        number: parsedSessionFromListPage.number,
                                         collection: parsedCollection.collection,
                                         title: parsedSessionFromSessionPage.title,
                                         description: parsedSessionFromSessionPage.description,
                                         transcript: parsedSessionFromSessionPage.description,
                                         iOS: parsedSessionFromListPage.iOS,
                                         macOS: parsedSessionFromListPage.macOS,
-                                        watchOS: parsedSessionFromListPage.watchOS,
                                         tvOS: parsedSessionFromListPage.tvOS,
+                                        watchOS: parsedSessionFromListPage.watchOS,
                                         sessionURL: parsedSessionFromListPage.sessionURL,
+                                        imageURL: parsedSessionFromListPage.imageURL,
                                         videoURL: parsedSessionFromSessionPage.videoURL,
                                         presentationURL: parsedSessionFromSessionPage.presentationURL).save(db)
                                 }
@@ -117,11 +118,13 @@ private struct SessionListPage {
     }
     
     struct ParsedSession {
+        let number: Int
         let sessionURL: URL
-        let macOS: Bool
+        let imageURL: URL
         let iOS: Bool
-        let watchOS: Bool
+        let macOS: Bool
         let tvOS: Bool
+        let watchOS: Bool
     }
     
     let data: Data
@@ -132,11 +135,15 @@ private struct SessionListPage {
             .css("li.collection-focus-group")
             .map { collectionElem in
                 guard let collection = collectionElem.firstChild(css: "span.font-bold")?.textPresence else { throw ScrapingError() }
-                let sessions = try collectionElem.css("li.collection-item section.col-70").map { sessionElem -> ParsedSession in
-                    guard let anchorElem = sessionElem.firstChild(css: "a"),
+                let sessions = try collectionElem.css("li.collection-item").map { sessionElem -> ParsedSession in
+                    guard let anchorElem = sessionElem.firstChild(css: "section.col-70 a"),
                         let urlString = anchorElem.attributes["href"],
                         let sessionURL = URL(string: urlString, relativeTo: baseURL) else { throw ScrapingError() }
-                    guard let focusesElem = sessionElem.firstChild(css: "ul.video-tags li.focus span") else { throw ScrapingError() }
+                    guard let number = Int(sessionURL.lastPathComponent) else { throw ScrapingError() }
+                    guard let imageElem = sessionElem.firstChild(css: "section.col-30 img"),
+                        let imageURLString = imageElem.attributes["src"],
+                        let imageURL = URL(string: imageURLString, relativeTo: baseURL) else { throw ScrapingError() }
+                    guard let focusesElem = sessionElem.firstChild(css: "section.col-70 ul.video-tags li.focus span") else { throw ScrapingError() }
                     let focuses: [String]
                     if let focusText = focusesElem.textPresence {
                         focuses = focusText.characters
@@ -148,11 +155,13 @@ private struct SessionListPage {
                     }
                     
                     return ParsedSession(
+                        number: number,
                         sessionURL: sessionURL,
-                        macOS: focuses.contains("macos"),
+                        imageURL: imageURL,
                         iOS: focuses.contains("ios"),
-                        watchOS: focuses.contains("watchos"),
-                        tvOS: focuses.contains("tvos"))
+                        macOS: focuses.contains("macos"),
+                        tvOS: focuses.contains("tvos"),
+                        watchOS: focuses.contains("watchos"))
                 }
                 return ParsedCollection(collection: collection, sessions: sessions)
         }

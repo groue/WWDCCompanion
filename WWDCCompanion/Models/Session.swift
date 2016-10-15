@@ -9,13 +9,14 @@ class Session : Record {
     let transcript: String
     let iOS: Bool
     let macOS: Bool
-    let watchOS: Bool
     let tvOS: Bool
+    let watchOS: Bool
     let sessionURL: URL
+    let imageURL: URL
     let videoURL: URL
     let presentationURL: URL?
     
-    init(year: Int, number: Int, collection: String, title: String, description: String, transcript: String, iOS: Bool, macOS: Bool, watchOS: Bool, tvOS: Bool, sessionURL: URL, videoURL: URL, presentationURL: URL?) {
+    init(year: Int, number: Int, collection: String, title: String, description: String, transcript: String, iOS: Bool, macOS: Bool, tvOS: Bool, watchOS: Bool, sessionURL: URL, imageURL: URL, videoURL: URL, presentationURL: URL?) {
         self.year = year
         self.number = number
         self.collection = collection
@@ -24,9 +25,10 @@ class Session : Record {
         self.transcript = transcript
         self.iOS = iOS
         self.macOS = macOS
-        self.watchOS = watchOS
         self.tvOS = tvOS
+        self.watchOS = watchOS
         self.sessionURL = sessionURL
+        self.imageURL = imageURL
         self.videoURL = videoURL
         self.presentationURL = presentationURL
         super.init()
@@ -45,9 +47,10 @@ class Session : Record {
         transcript = row.value(named: "transcript")
         iOS = row.value(named: "iOS")
         macOS = row.value(named: "macOS")
-        watchOS = row.value(named: "watchOS")
         tvOS = row.value(named: "tvOS")
+        watchOS = row.value(named: "watchOS")
         sessionURL = row.value(named: "sessionURL")
+        imageURL = row.value(named: "imageURL")
         videoURL = row.value(named: "videoURL")
         presentationURL = row.value(named: "presentationURL")
         super.init(row: row)
@@ -66,6 +69,7 @@ class Session : Record {
             "watchOS": watchOS,
             "tvOS": tvOS,
             "sessionURL": sessionURL,
+            "imageURL": imageURL,
             "videoURL": videoURL,
             "presentationURL": presentationURL,
         ]

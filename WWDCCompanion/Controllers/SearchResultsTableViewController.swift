@@ -44,7 +44,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
         
         sessionsController.setRequest(sql:
-            "SELECT *, SNIPPET(fullTextSessions, -1, '<b>', '</b>', '…', 15) AS snippet " +
+            "SELECT sessions.*, SNIPPET(fullTextSessions, -1, '<b>', '</b>', '…', 15) AS snippet " +
             "FROM sessions, fullTextSessions " +
             "WHERE fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
             "ORDER BY RANK", arguments: [pattern])

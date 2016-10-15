@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,49 +13,54 @@
         <scene sceneID="pNB-EK-BRf">
             <objects>
                 <tableViewController storyboardIdentifier="SessionsTableViewController" id="3vs-JU-58m" customClass="SessionsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVl-Pn-wKz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVl-Pn-wKz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="97" id="83j-0T-6EX" customClass="SessionTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="97"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="103" id="83j-0T-6EX" customClass="SessionTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="83j-0T-6EX" id="m3O-N1-fU1">
-                                    <frame key="frameInset" width="375" height="96"/>
+                                    <frame key="frameInset" width="375" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-md-xzB">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-md-xzB">
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOD-bw-Egb">
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Focuses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ha-nd-rus">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJV-VL-YCM">
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y6E-bC-Xtb">
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="y6E-bC-Xtb" secondAttribute="height" multiplier="16:9" id="P17-Ch-e65"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="K0S-md-xzB" firstAttribute="top" secondItem="wOD-bw-Egb" secondAttribute="bottom" id="FYL-Lf-peo"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="UJV-VL-YCM" secondAttribute="trailing" id="V1p-3i-brB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="K0S-md-xzB" secondAttribute="bottom" id="f4x-46-STS"/>
-                                        <constraint firstItem="K0S-md-xzB" firstAttribute="leading" secondItem="m3O-N1-fU1" secondAttribute="leadingMargin" id="ixe-7d-UvP"/>
+                                        <constraint firstItem="K0S-md-xzB" firstAttribute="top" secondItem="1ha-nd-rus" secondAttribute="bottom" id="I4F-gF-rX6"/>
+                                        <constraint firstItem="y6E-bC-Xtb" firstAttribute="width" secondItem="m3O-N1-fU1" secondAttribute="width" multiplier="1:4" id="Nel-JS-IKy"/>
+                                        <constraint firstItem="K0S-md-xzB" firstAttribute="leading" secondItem="y6E-bC-Xtb" secondAttribute="trailing" constant="8" symbolic="YES" id="Vsv-xv-HVc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="y6E-bC-Xtb" secondAttribute="bottom" priority="250" id="epY-F8-5fo"/>
+                                        <constraint firstAttribute="topMargin" secondItem="1ha-nd-rus" secondAttribute="top" id="ezc-hg-xAd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="K0S-md-xzB" secondAttribute="bottom" priority="250" id="f4x-46-STS"/>
+                                        <constraint firstItem="y6E-bC-Xtb" firstAttribute="top" secondItem="1ha-nd-rus" secondAttribute="top" constant="2" id="ger-R0-eM4"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="K0S-md-xzB" secondAttribute="trailing" id="jQG-Bz-RxB"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="wOD-bw-Egb" secondAttribute="leading" id="kVN-37-1Fq"/>
-                                        <constraint firstItem="UJV-VL-YCM" firstAttribute="baseline" secondItem="wOD-bw-Egb" secondAttribute="baseline" id="rZa-9J-Bjz"/>
-                                        <constraint firstAttribute="topMargin" secondItem="wOD-bw-Egb" secondAttribute="top" id="svh-vT-KGv"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="K0S-md-xzB" secondAttribute="bottom" id="pjM-Zw-yt6"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="y6E-bC-Xtb" secondAttribute="bottom" id="sN6-KP-7Ol"/>
+                                        <constraint firstItem="1ha-nd-rus" firstAttribute="leading" secondItem="y6E-bC-Xtb" secondAttribute="trailing" constant="8" symbolic="YES" id="xiO-RA-O3N"/>
+                                        <constraint firstItem="y6E-bC-Xtb" firstAttribute="leading" secondItem="m3O-N1-fU1" secondAttribute="leadingMargin" id="yZ5-l9-cSd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="numberLabel" destination="wOD-bw-Egb" id="cyF-h0-bvU"/>
+                                    <outlet property="focusesLabel" destination="1ha-nd-rus" id="AA1-Zx-GGa"/>
+                                    <outlet property="sessionImageView" destination="y6E-bC-Xtb" id="uE2-xH-wr7"/>
                                     <outlet property="titleLabel" destination="K0S-md-xzB" id="24M-tL-znk"/>
-                                    <outlet property="yearLabel" destination="UJV-VL-YCM" id="PYo-HE-4Jb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
