@@ -69,8 +69,14 @@ class SearchResultsTableViewController: UITableViewController {
     private func configure(cell: SearchResultTableViewCell, at indexPath: IndexPath) {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
-        cell.numberLabel.text = String(format:NSLocalizedString("Session %d", comment: ""), session.number)
-        cell.yearLabel.text = "\(session.year)"
+        cell.sessionImageURL = session.imageURL
+        
+        var focuses: [String] = []
+        if session.iOS { focuses.append("iOS") }
+        if session.macOS { focuses.append("macOS") }
+        if session.tvOS { focuses.append("tvOS") }
+        if session.watchOS { focuses.append("watchOS") }
+        cell.focusesLabel.text = focuses.joined(separator: ", ")
         
         let font = cell.snippetLabel.font ?? UIFont.systemFont(ofSize: 17)
         let htmlSnippet = "<style>span{font-family: \"\(font.familyName)\"; font-size: \(font.pointSize)px; color: #888;} b{font-weight: normal; color: #000;}</style><span>\(session.snippet)</span>"

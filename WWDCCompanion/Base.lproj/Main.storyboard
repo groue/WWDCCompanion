@@ -95,53 +95,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" rowHeight="219" id="ZSJ-uX-uDN" customClass="SearchResultTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="219"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" rowHeight="215" id="ckk-bE-uEX" customClass="SearchResultTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="215"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ZSJ-uX-uDN" id="cZs-5P-9wt">
-                                    <frame key="frameInset" width="375" height="218"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ckk-bE-uEX" id="Lcw-R9-aKF">
+                                    <frame key="frameInset" width="375" height="214"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RL1-6g-RTq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jli-j9-PA5">
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7v-g1-iSb">
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Focuses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOv-LS-Det">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at3-um-wXj">
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snippet" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-TZ-stv">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nmf-Ia-sIm">
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Nmf-Ia-sIm" secondAttribute="height" multiplier="16:9" id="nQy-YW-QbA"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snippet" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUw-4k-ajK">
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="RL1-6g-RTq" secondAttribute="trailing" id="2xw-ER-SZd"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="L7v-g1-iSb" secondAttribute="leading" id="45G-34-gng"/>
-                                        <constraint firstItem="at3-um-wXj" firstAttribute="baseline" secondItem="L7v-g1-iSb" secondAttribute="baseline" id="Bni-SN-RdN"/>
-                                        <constraint firstItem="zAo-TZ-stv" firstAttribute="leading" secondItem="cZs-5P-9wt" secondAttribute="leadingMargin" id="Ggt-IP-pMF"/>
-                                        <constraint firstItem="zAo-TZ-stv" firstAttribute="top" secondItem="RL1-6g-RTq" secondAttribute="bottom" constant="8" symbolic="YES" id="LVE-tm-Cdh"/>
-                                        <constraint firstItem="RL1-6g-RTq" firstAttribute="top" secondItem="L7v-g1-iSb" secondAttribute="bottom" id="Wpv-DO-egN"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zAo-TZ-stv" secondAttribute="trailing" id="cIH-8r-dYc"/>
-                                        <constraint firstItem="RL1-6g-RTq" firstAttribute="leading" secondItem="cZs-5P-9wt" secondAttribute="leadingMargin" id="caF-AB-vJE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="zAo-TZ-stv" secondAttribute="bottom" id="lY2-S7-WMd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="at3-um-wXj" secondAttribute="trailing" id="lnr-6I-Izy"/>
-                                        <constraint firstAttribute="topMargin" secondItem="L7v-g1-iSb" secondAttribute="top" id="mgH-Wa-qFL"/>
+                                        <constraint firstAttribute="topMargin" secondItem="oOv-LS-Det" secondAttribute="top" id="12x-ll-cee"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bUw-4k-ajK" secondAttribute="trailing" id="5LK-QI-whL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Jli-j9-PA5" secondAttribute="trailing" id="6fV-56-tAd"/>
+                                        <constraint firstItem="Nmf-Ia-sIm" firstAttribute="width" secondItem="Lcw-R9-aKF" secondAttribute="width" multiplier="1:4" id="90H-ep-ekJ"/>
+                                        <constraint firstItem="bUw-4k-ajK" firstAttribute="top" secondItem="Jli-j9-PA5" secondAttribute="bottom" priority="250" constant="8" symbolic="YES" id="BEo-7J-UYO"/>
+                                        <constraint firstItem="Jli-j9-PA5" firstAttribute="leading" secondItem="Nmf-Ia-sIm" secondAttribute="trailing" constant="8" symbolic="YES" id="JY0-Rb-vc1"/>
+                                        <constraint firstItem="Nmf-Ia-sIm" firstAttribute="leading" secondItem="Lcw-R9-aKF" secondAttribute="leadingMargin" id="UWh-sd-9T0"/>
+                                        <constraint firstItem="Nmf-Ia-sIm" firstAttribute="top" secondItem="oOv-LS-Det" secondAttribute="top" constant="2" id="VWN-o6-5LV"/>
+                                        <constraint firstItem="bUw-4k-ajK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jli-j9-PA5" secondAttribute="bottom" constant="8" symbolic="YES" id="dS8-5k-He3"/>
+                                        <constraint firstItem="oOv-LS-Det" firstAttribute="leading" secondItem="Nmf-Ia-sIm" secondAttribute="trailing" constant="8" symbolic="YES" id="dqU-na-VQD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bUw-4k-ajK" secondAttribute="bottom" id="hc0-iV-cUu"/>
+                                        <constraint firstItem="bUw-4k-ajK" firstAttribute="top" secondItem="Nmf-Ia-sIm" secondAttribute="bottom" priority="250" constant="8" symbolic="YES" id="lHG-2z-hlc"/>
+                                        <constraint firstItem="bUw-4k-ajK" firstAttribute="leading" secondItem="Lcw-R9-aKF" secondAttribute="leadingMargin" id="nGg-cm-hzf"/>
+                                        <constraint firstItem="bUw-4k-ajK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nmf-Ia-sIm" secondAttribute="bottom" constant="8" symbolic="YES" id="rDZ-Uv-OOn"/>
+                                        <constraint firstItem="Jli-j9-PA5" firstAttribute="top" secondItem="oOv-LS-Det" secondAttribute="bottom" id="xZC-md-Zky"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="numberLabel" destination="L7v-g1-iSb" id="7Fe-Zi-yfj"/>
-                                    <outlet property="snippetLabel" destination="zAo-TZ-stv" id="1v7-ay-LUO"/>
-                                    <outlet property="titleLabel" destination="RL1-6g-RTq" id="JTQ-HE-y8t"/>
-                                    <outlet property="yearLabel" destination="at3-um-wXj" id="xEm-77-ube"/>
+                                    <outlet property="focusesLabel" destination="oOv-LS-Det" id="n65-gl-dMD"/>
+                                    <outlet property="sessionImageView" destination="Nmf-Ia-sIm" id="AEn-GL-Fld"/>
+                                    <outlet property="snippetLabel" destination="bUw-4k-ajK" id="KFP-uW-jtf"/>
+                                    <outlet property="titleLabel" destination="Jli-j9-PA5" id="nBy-nE-1XN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

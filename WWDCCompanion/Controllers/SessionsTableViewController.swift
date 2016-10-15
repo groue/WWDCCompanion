@@ -13,7 +13,6 @@ class SessionsTableViewController: UITableViewController {
     @IBOutlet private var downloadBarButtonItem: UIBarButtonItem!
     private var sessionsController: FetchedRecordsController<Session>!
     private var searchController: UISearchController!
-    private let urlSession = URLSession(configuration: .default)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,25 +45,6 @@ class SessionsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let session = sessionsController.record(at: indexPath)
-        let task = urlSession.dataTask(with: session.imageURL) { [weak self] (data, response, error) in
-            if let image = data.flatMap({ UIImage(data: $0) }) {
-                DispatchQueue.main.async {
-                    guard let strongSelf = self else { return }
-                    if let indexPath = strongSelf.sessionsController.indexPath(for: session),
-                        let cell = strongSelf.tableView.cellForRow(at: indexPath) as? SessionTableViewCell
-                    {
-                        cell.sessionImageView.image = image
-                    }
-                }
-            }
-        }
-        task.resume()
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,13 +58,14 @@ class SessionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionTableViewCell", for: indexPath) as! SessionTableViewCell
         configure(cell: cell, at: indexPath)
-        cell.sessionImageView.image = nil
         return cell
     }
     
     private func configure(cell: SessionTableViewCell, at indexPath: IndexPath) {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
+        cell.sessionImageURL = session.imageURL
+        
         var focuses: [String] = []
         if session.iOS { focuses.append("iOS") }
         if session.macOS { focuses.append("macOS") }
