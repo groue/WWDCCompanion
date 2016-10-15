@@ -3,7 +3,7 @@ WWDC Companion
 
 |         |         |         |         |
 | :-----: | :-----: | :-----: | :-----: |
-| [](Images/Screen1.png) | [](Images/Screen2.png) | [](Images/Screen3.png) | [](Images/Screen4.png) |
+| ![Screen shot 1](Images/Screen1.png) | ![Screen shot 2](Images/Screen2.png) | ![Screen shot 3](Images/Screen3.png) | ![Screen shot 4](Images/Screen4.png) |
 
 **This Swift 3 application stores, displays, and let the user search the [WWDC 2016 sessions](https://developer.apple.com/videos/wwdc2016/).**
 
