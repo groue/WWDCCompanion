@@ -7,20 +7,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--WWDC Companion-->
         <scene sceneID="pNB-EK-BRf">
             <objects>
                 <tableViewController id="3vs-JU-58m" customClass="SessionsTableViewController" customModule="WWDCCompanion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="225" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVl-Pn-wKz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVl-Pn-wKz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="225" id="83j-0T-6EX" customClass="SessionTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="225"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="97" id="83j-0T-6EX" customClass="SessionTableViewCell" customModule="WWDCCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="83j-0T-6EX" id="m3O-N1-fU1">
-                                    <frame key="frameInset" width="375" height="224"/>
+                                    <frame key="frameInset" width="375" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-md-xzB">
@@ -62,7 +62,18 @@
                             <outlet property="delegate" destination="3vs-JU-58m" id="L8c-52-Zxb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="OTS-kA-GCx"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="WWDC Companion" id="OTS-kA-GCx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="TYP-vC-NP7">
+                            <connections>
+                                <action selector="download" destination="3vs-JU-58m" id="5Ms-u3-HrY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="downloadBarButtonItem" destination="TYP-vC-NP7" id="zlu-Qe-OR3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDl-cP-fyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

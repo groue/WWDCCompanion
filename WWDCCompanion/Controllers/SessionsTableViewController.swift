@@ -10,6 +10,7 @@ import UIKit
 import GRDBCustomSQLite
 
 class SessionsTableViewController: UITableViewController {
+    @IBOutlet var downloadBarButtonItem: UIBarButtonItem!
     var sessionsController: FetchedRecordsController<Session>!
 
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class SessionsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if sessionsController.sections.count == 0 || sessionsController.sections[0].numberOfRecords == 0 {
-            performSegue(withIdentifier: "Download", sender: self)
+            download()
         }
     }
     
@@ -60,5 +61,24 @@ class SessionsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+    
+    // MARK: - Sessions
+    
+    @IBAction func download() {
+        downloadBarButtonItem.isEnabled = false
+        let progress = WWDC2016.download { [weak self] error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+                strongSelf.present(alert, animated: true, completion: nil)
+            }
+            strongSelf.tableView.tableHeaderView = nil
+            strongSelf.downloadBarButtonItem.isEnabled = true
+        }
+        let progressView = UIProgressView(frame: .zero)
+        progressView.observedProgress = progress
+        tableView.tableHeaderView = progressView
     }
 }

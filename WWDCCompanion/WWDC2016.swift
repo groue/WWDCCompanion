@@ -20,14 +20,25 @@ struct ScrapingError : Error {
 }
 
 struct WWDC2016 {
-    static func download() -> Progress {
+    static func download(completion: @escaping (Error?) -> ()) -> Progress {
         let session = URLSession(configuration: .default)
         let progress = Progress()
+        var dataTasks: [URLSessionDataTask] = []
+        progress.cancellationHandler = {
+            for task in dataTasks {
+                task.cancel()
+            }
+        }
         
         let listURL = URL(string: "https://developer.apple.com/videos/wwdc2016/")!
         let listTask = session.dataTask(with: listURL) { (data, response, error) in
-            guard let data = data else { fatalError("TODO") }
-            guard error == nil else { fatalError("TODO") }
+            guard let data = data else {
+                progress.cancel()
+                DispatchQueue.main.async {
+                    completion(error!)
+                }
+                return
+            }
             let page = SessionListPage(data: data, baseURL: listURL)
             do {
                 let collections = try page.collections()
@@ -35,10 +46,21 @@ struct WWDC2016 {
                 for parsedCollection in try page.collections() {
                     for parsedSessionFromListPage in parsedCollection.sessions {
                         let sessionURL = parsedSessionFromListPage.sessionURL
-                        guard let number = Int(sessionURL.lastPathComponent) else { fatalError("TODO") }
+                        guard let number = Int(sessionURL.lastPathComponent) else {
+                            progress.cancel()
+                            DispatchQueue.main.async {
+                                completion(ScrapingError())
+                            }
+                            return
+                        }
                         let sessionTask = session.dataTask(with: sessionURL) { (data, response, error) in
-                            guard let data = data else { fatalError("TODO") }
-                            guard error == nil else { fatalError("TODO") }
+                            guard let data = data else {
+                                progress.cancel()
+                                DispatchQueue.main.async {
+                                    completion(error!)
+                                }
+                                return
+                            }
                             let page = SessionPage(data: data, baseURL: sessionURL)
                             do {
                                 let parsedSessionFromSessionPage = try page.session()
@@ -59,13 +81,30 @@ struct WWDC2016 {
                                         presentationURL: parsedSessionFromSessionPage.presentationURL).save(db)
                                 }
                                 progress.completedUnitCount += 1
-                            } catch { fatalError("TODO") }
+                                if progress.completedUnitCount == progress.totalUnitCount {
+                                    DispatchQueue.main.async {
+                                        completion(nil)
+                                    }
+                                }
+                            } catch {
+                                progress.cancel()
+                                DispatchQueue.main.async {
+                                    completion(error)
+                                }
+                            }
                         }
+                        dataTasks.append(sessionTask)
                         sessionTask.resume()
                     }
                 }
-            } catch { fatalError("TODO") }
+            } catch {
+                progress.cancel()
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+            }
         }
+        dataTasks.append(listTask)
         listTask.resume()
         return progress
     }

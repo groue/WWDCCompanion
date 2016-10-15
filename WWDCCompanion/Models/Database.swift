@@ -52,6 +52,7 @@ func setupDatabase(_ application: UIApplication) throws {
         }
         
         try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
+            t.tokenizer = .porter()
             t.content = "sessions"
             t.column("title")
             t.column("transcript")
