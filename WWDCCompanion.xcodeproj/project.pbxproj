@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		3FB563915CFFEAD98D4AC409 /* Pods_WWDCCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */; };
 		566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */; };
-		566D9A0F1DB0AE0F009CEA56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */; };
 		566D9A121DB0AE0F009CEA56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A101DB0AE0F009CEA56 /* Main.storyboard */; };
 		566D9A141DB0AE0F009CEA56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A131DB0AE0F009CEA56 /* Assets.xcassets */; };
 		566D9A171DB0AE0F009CEA56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566D9A151DB0AE0F009CEA56 /* LaunchScreen.storyboard */; };
 		566D9A221DB0AE0F009CEA56 /* WWDCCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A211DB0AE0F009CEA56 /* WWDCCompanionTests.swift */; };
 		566D9A2D1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A2C1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift */; };
-		566D9A3B1DB0AEC3009CEA56 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A3A1DB0AEC3009CEA56 /* Database.swift */; };
 		566D9A8F1DB0B304009CEA56 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; };
 		566D9A901DB0B304009CEA56 /* GRDBCustomSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		566D9A9A1DB0F19E009CEA56 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A991DB0F19E009CEA56 /* Session.swift */; };
 		566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */; };
+		566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B291DB1EBD4009CEA56 /* Database.swift */; };
+		566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2A1DB1EBD4009CEA56 /* Session.swift */; };
+		566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */; };
+		566D9B331DB1EF1C009CEA56 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,7 +192,6 @@
 		1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 		566D9A091DB0AE0F009CEA56 /* WWDCCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDCCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		566D9A111DB0AE0F009CEA56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		566D9A131DB0AE0F009CEA56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		566D9A161DB0AE0F009CEA56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -202,10 +202,12 @@
 		566D9A281DB0AE0F009CEA56 /* WWDCCompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WWDCCompanionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		566D9A2C1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCCompanionUITests.swift; sourceTree = "<group>"; };
 		566D9A2E1DB0AE0F009CEA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		566D9A3A1DB0AEC3009CEA56 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GRDB.xcodeproj; path = GRDB/GRDB.xcodeproj; sourceTree = SOURCE_ROOT; };
-		566D9A991DB0F19E009CEA56 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWDC2016.swift; sourceTree = "<group>"; };
+		566D9B291DB1EBD4009CEA56 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		566D9B2A1DB1EBD4009CEA56 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
+		566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,13 +273,11 @@
 			isa = PBXGroup;
 			children = (
 				566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */,
-				566D9A3A1DB0AEC3009CEA56 /* Database.swift */,
-				566D9A991DB0F19E009CEA56 /* Session.swift */,
-				566D9A0E1DB0AE0F009CEA56 /* ViewController.swift */,
+				566D9B271DB1EBD4009CEA56 /* Controllers */,
+				566D9B281DB1EBD4009CEA56 /* Models */,
+				566D9B311DB1EF05009CEA56 /* Views */,
 				566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */,
-				566D9A101DB0AE0F009CEA56 /* Main.storyboard */,
-				566D9A131DB0AE0F009CEA56 /* Assets.xcassets */,
-				566D9A151DB0AE0F009CEA56 /* LaunchScreen.storyboard */,
+				566D9B341DB1EF5A009CEA56 /* Resources */,
 				566D9A181DB0AE0F009CEA56 /* Info.plist */,
 				566D9AB21DB0F542009CEA56 /* Frameworks */,
 			);
@@ -332,6 +332,41 @@
 				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		566D9B271DB1EBD4009CEA56 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		566D9B281DB1EBD4009CEA56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				566D9B291DB1EBD4009CEA56 /* Database.swift */,
+				566D9B2A1DB1EBD4009CEA56 /* Session.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		566D9B311DB1EF05009CEA56 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				566D9B321DB1EF1C009CEA56 /* SessionTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		566D9B341DB1EF5A009CEA56 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				566D9A131DB0AE0F009CEA56 /* Assets.xcassets */,
+				566D9A151DB0AE0F009CEA56 /* LaunchScreen.storyboard */,
+				566D9A101DB0AE0F009CEA56 /* Main.storyboard */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		EACA5C496B81AC48146252AF /* Frameworks */ = {
@@ -661,11 +696,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566D9A9A1DB0F19E009CEA56 /* Session.swift in Sources */,
-				566D9A3B1DB0AEC3009CEA56 /* Database.swift in Sources */,
-				566D9A0F1DB0AE0F009CEA56 /* ViewController.swift in Sources */,
+				566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */,
+				566D9B331DB1EF1C009CEA56 /* SessionTableViewCell.swift in Sources */,
+				566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */,
 				566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */,
 				566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */,
+				566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

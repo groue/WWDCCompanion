@@ -35,42 +35,41 @@ func setupDatabase(_ application: UIApplication) throws {
     migrator.registerMigration("createWWDCSessions") { db in
         
         try db.create(table: "sessions") { t in
-            t.column("id", .integer).primaryKey()
+            t.primaryKey(["year", "number"])
             t.column("year", .integer).notNull()
             t.column("number", .integer).notNull()
-            t.column("title", .text).notNull().check { length($0) > 0 }
             t.column("collection", .text).notNull().check { length($0) > 0 }
+            t.column("title", .text).notNull().check { length($0) > 0 }
+            t.column("description", .text).notNull().check { length($0) > 0 }
+            t.column("transcript", .text).notNull().check { length($0) > 0 }
             t.column("iOS", .boolean).notNull()
             t.column("macOS", .boolean).notNull()
             t.column("watchOS", .boolean).notNull()
             t.column("tvOS", .boolean).notNull()
-            t.column("transcript", .text)
-            t.column("url", .text)
-            t.column("hdVideoURL", .text)
-            t.column("sdVideoURL", .text)
+            t.column("sessionURL", .text).notNull()
+            t.column("videoURL", .text).notNull()
             t.column("presentationURL", .text)
-            
-            t.uniqueKey(["year", "number"])
         }
         
         try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
             t.content = "sessions"
             t.column("title")
             t.column("transcript")
+            t.column("description")
         }
         
         // Triggers to keep the FTS index up to date.
         // See https://sqlite.org/fts5.html#external_content_tables
         try db.execute(
             "CREATE TRIGGER sessions_ai AFTER INSERT ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(rowid, title, c) VALUES (new.rowid, new.title, new.transcript); " +
+                "INSERT INTO fullTextSessions(rowid, title, transcript, description) VALUES (new.rowid, new.title, new.transcript, new.description); " +
                 "END; " +
                 "CREATE TRIGGER sessions_ad AFTER DELETE ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, c) VALUES('delete', old.new.rowid, old.title, old.transcript); " +
+                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript, description) VALUES('delete', old.rowid, old.title, old.transcript, old.description); " +
                 "END; " +
                 "CREATE TRIGGER sessions_au AFTER UPDATE ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript) VALUES('delete', old.new.rowid, old.title, old.transcript); " +
-                "INSERT INTO fullTextSessions(rowid, title, c) VALUES (new.new.rowid, new.title, new.transcript); " +
+                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript, description) VALUES('delete', old.rowid, old.title, old.transcript, old.description); " +
+                "INSERT INTO fullTextSessions(rowid, title, transcript, description) VALUES (new.rowid, new.title, new.transcript, new.description); " +
             "END;")
     }
     
