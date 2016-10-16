@@ -53,26 +53,12 @@ func setupDatabase(_ application: UIApplication) throws {
         }
         
         try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
+            t.synchronize(withTable: "sessions")
             t.tokenizer = .porter()
-            t.content = "sessions"
             t.column("title")
             t.column("transcript")
             t.column("description")
         }
-        
-        // Triggers to keep the FTS index up to date.
-        // See https://sqlite.org/fts5.html#external_content_tables
-        try db.execute(
-            "CREATE TRIGGER sessions_ai AFTER INSERT ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(rowid, title, transcript, description) VALUES (new.rowid, new.title, new.transcript, new.description); " +
-                "END; " +
-                "CREATE TRIGGER sessions_ad AFTER DELETE ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript, description) VALUES('delete', old.rowid, old.title, old.transcript, old.description); " +
-                "END; " +
-                "CREATE TRIGGER sessions_au AFTER UPDATE ON sessions BEGIN " +
-                "INSERT INTO fullTextSessions(fullTextSessions, rowid, title, transcript, description) VALUES('delete', old.rowid, old.title, old.transcript, old.description); " +
-                "INSERT INTO fullTextSessions(rowid, title, transcript, description) VALUES (new.rowid, new.title, new.transcript, new.description); " +
-            "END;")
     }
     
     try migrator.migrate(dbQueue)
