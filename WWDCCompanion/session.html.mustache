@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width">
-      <style type="text/css">
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font: -apple-system-body;
-      }
-      p {
-        margin: 1em 20px;
-      }
-      h1 {
-        margin: 0 20px;
-        font-size: 2em;
-      }
-      h2 {
-        margin: 1em 20px;
-        font: -apple-system-body;
-        text-transform: uppercase;
-        color: #888;
-      }
-      header p {
-        margin: 0.5em 20px 0;
-        color: #888;
-      }
-      div.ratio-16-9 {
-        position: relative;
-        padding-bottom: 56.25%; /* 100 * 9/16.0 */
-        height: 0;
-        overflow: hidden;
-      }
-      div.ratio-16-9 img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-      </style>
-    </head>
-    <body>
-      <header>
-        <div class="ratio-16-9">
-          <img src="{{sessionImageURL}}">
-        </div>
-        <p>{{focuses}}</p>
-        <h1>{{title}}</h1>
-      </header>
-      <section>
-        {{#transcriptParagraphs}}
-        <p>{{.}}</p>
-        {{/}}
-      </section>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "{{bodyFont.name}}";
+      font-size: {{bodyFont.size}}px;
+    }
+    p {
+      margin: 1em 20px;
+    }
+    h1 {
+      margin: 0 20px;
+      font-family: "{{title1Font.name}}";
+      font-size: {{title1Font.size}}px;
+      font-weight: normal;
+    }
+    header p {
+      margin: 0.5em 20px;
+      color: #888;
+      font-family: "{{calloutFont.name}}";
+      font-size: {{calloutFont.size}}px;
+    }
+    div.ratio-16-9 {
+      position: relative;
+      padding-bottom: 56.25%; /* 9/16.0 */
+      height: 0;
+      overflow: hidden;
+    }
+    div.ratio-16-9 img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="ratio-16-9">
+        <img src="{{sessionImageURL}}">
+      </div>
+      <p>{{focuses}}</p>
+      <h1>{{title}}</h1>
+    </header>
+    <section>
+      {{#transcriptParagraphs}}
+      <p>{{.}}</p>
+      {{/}}
+    </section>
+  </body>
 </html>

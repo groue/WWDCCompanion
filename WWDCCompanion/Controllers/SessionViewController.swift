@@ -25,8 +25,21 @@ class SessionViewController: UIViewController {
             .split(separator: "\n")
             .map { String($0) }
         
+        let calloutFont = UIFont.preferredFont(forTextStyle: .callout)
+        let bodyFont = UIFont.preferredFont(forTextStyle: .body)
+        let title1Font = UIFont.preferredFont(forTextStyle: .title1)
+        
         let template = try! Template(named: "session.html")
         let templateValue = Box([
+            "calloutFont": [
+                "name": calloutFont.familyName,
+                "size": Double(calloutFont.pointSize)], // GRMustache supports Double, but not CGFloat
+            "bodyFont": [
+                "name": bodyFont.familyName,
+                "size": Double(bodyFont.pointSize)],
+            "title1Font": [
+                "name": title1Font.familyName,
+                "size": Double(title1Font.pointSize)],
             "sessionImageURL": session.imageURL.absoluteString,
             "title": session.title,
             "focuses": session.focuses,
