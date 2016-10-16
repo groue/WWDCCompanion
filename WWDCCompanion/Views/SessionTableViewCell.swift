@@ -15,15 +15,8 @@ class SessionTableViewCell: UITableViewCell {
     
     var sessionImageURL: URL? {
         didSet {
-            guard let url = sessionImageURL else {
-                sessionImageView.image = nil
-                return
-            }
-            
-            if let image = ImageCache.default.cachedImage(for: url) {
-                sessionImageView.image = image
-            } else {
-                sessionImageView.image = nil
+            sessionImageView.image = nil
+            if let url = sessionImageURL {
                 ImageCache.default.loadImage(from: url) { [weak self] image in
                     if self?.sessionImageURL == url {
                         self?.sessionImageView.image = image
