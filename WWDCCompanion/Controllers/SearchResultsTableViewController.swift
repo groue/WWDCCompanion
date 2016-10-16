@@ -6,7 +6,7 @@ private class SessionWithSnippet : Session {
     var snippet: String
     
     required init(row: Row) {
-        self.snippet = row.value(named: "snippet")
+        snippet = row.value(named: "snippet")
         super.init(row: row)
     }
 }
@@ -93,7 +93,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Let the SessionsTableViewController present the session
-        self.presentingViewController?.performSegue(withIdentifier: "ShowSession", sender: self)
+        presentingViewController?.performSegue(withIdentifier: "ShowSession", sender: self)
     }
     
     // MARK: - UISearchResultsUpdating

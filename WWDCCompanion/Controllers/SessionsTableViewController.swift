@@ -60,8 +60,8 @@ class SessionsTableViewController: UITableViewController {
         definesPresentationContext = true
         
         // Title and back button
-        self.navigationItem.title = NSLocalizedString("WWDC Companion", comment: "")
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sessions", comment: ""), style: .plain, target: nil, action: nil)
+        navigationItem.title = NSLocalizedString("WWDC Companion", comment: "")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sessions", comment: ""), style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
