@@ -128,26 +128,26 @@ class SessionsTableViewController: UITableViewController {
     // MARK: - Download
     
     @IBAction private func download() {
-        // download
         let progress = WWDC2016.download { [weak self] error in
             guard let strongSelf = self else { return }
+            
             if let error = error {
                 let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
             }
             
-            // restore navigation bar
+            // Update UI
             strongSelf.navigationItem.titleView = nil
             strongSelf.downloadBarButtonItem.isEnabled = true
         }
         
-        // show download progress in navigation bar
+        // Update UI
         let navigationBar = navigationController!.navigationBar
         downloadBarButtonItem.isEnabled = false
         downloadProgressView.observedProgress = progress
-        downloadingView.frame = navigationBar.bounds
+        downloadingView.frame.size = downloadingView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        downloadingView.frame.size.width = navigationBar.bounds.width / 2
         navigationItem.titleView = downloadingView
-        downloadProgressView.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
     }
 }
