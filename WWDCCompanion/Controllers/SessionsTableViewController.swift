@@ -3,6 +3,8 @@ import GRDBCustomSQLite
 
 class SessionsTableViewController: UITableViewController {
     @IBOutlet private var downloadBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var downloadingView: UIView!
+    @IBOutlet private var downloadProgressView: UIProgressView!
     private var searchController: UISearchController!
     
     /// Use FetchedRecordsController to keep the list of sessions
@@ -126,7 +128,7 @@ class SessionsTableViewController: UITableViewController {
     // MARK: - Download
     
     @IBAction private func download() {
-        downloadBarButtonItem.isEnabled = false
+        // download
         let progress = WWDC2016.download { [weak self] error in
             guard let strongSelf = self else { return }
             if let error = error {
@@ -134,11 +136,18 @@ class SessionsTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
             }
+            
+            // restore navigation bar
             strongSelf.navigationItem.titleView = nil
             strongSelf.downloadBarButtonItem.isEnabled = true
         }
-        let progressView = UIProgressView(frame: .zero)
-        progressView.observedProgress = progress
-        navigationItem.titleView = progressView
+        
+        // show download progress in navigation bar
+        let navigationBar = navigationController!.navigationBar
+        downloadBarButtonItem.isEnabled = false
+        downloadProgressView.observedProgress = progress
+        downloadingView.frame = navigationBar.bounds
+        navigationItem.titleView = downloadingView
+        downloadProgressView.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
     }
 }

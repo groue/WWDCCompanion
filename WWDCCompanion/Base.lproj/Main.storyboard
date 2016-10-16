@@ -80,10 +80,46 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="downloadBarButtonItem" destination="TYP-vC-NP7" id="zlu-Qe-OR3"/>
+                        <outlet property="downloadProgressView" destination="Q4o-gU-zyg" id="wtd-1k-yUg"/>
+                        <outlet property="downloadingView" destination="X75-ZL-0KI" id="ktH-WA-LKz"/>
                         <segue destination="PjN-4i-JGP" kind="show" identifier="ShowSession" id="zR7-6r-7Nv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDl-cP-fyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="X75-ZL-0KI">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0N-Ta-Dm2">
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzk-CP-Utz">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q4o-gU-zyg"/>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Q4o-gU-zyg" secondAttribute="bottom" constant="4" id="6dG-1m-L6o"/>
+                                <constraint firstItem="Q4o-gU-zyg" firstAttribute="leading" secondItem="e0N-Ta-Dm2" secondAttribute="leading" id="RTB-pE-TiE"/>
+                                <constraint firstItem="Q4o-gU-zyg" firstAttribute="top" secondItem="mzk-CP-Utz" secondAttribute="bottom" constant="4" id="VN1-r4-7VO"/>
+                                <constraint firstAttribute="trailing" secondItem="Q4o-gU-zyg" secondAttribute="trailing" id="YBz-NP-uNX"/>
+                                <constraint firstAttribute="trailing" secondItem="mzk-CP-Utz" secondAttribute="trailing" id="Zu8-ZH-TnG"/>
+                                <constraint firstItem="mzk-CP-Utz" firstAttribute="leading" secondItem="e0N-Ta-Dm2" secondAttribute="leading" id="dA6-Yz-FML"/>
+                                <constraint firstItem="mzk-CP-Utz" firstAttribute="top" secondItem="e0N-Ta-Dm2" secondAttribute="top" id="n8j-Q2-ufU"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="e0N-Ta-Dm2" firstAttribute="top" secondItem="X75-ZL-0KI" secondAttribute="top" priority="250" id="G0c-9N-qLT"/>
+                        <constraint firstAttribute="bottom" secondItem="e0N-Ta-Dm2" secondAttribute="bottom" priority="250" id="IGb-kF-Koc"/>
+                        <constraint firstItem="e0N-Ta-Dm2" firstAttribute="centerY" secondItem="X75-ZL-0KI" secondAttribute="centerY" id="TLe-iX-zhI"/>
+                        <constraint firstItem="e0N-Ta-Dm2" firstAttribute="leading" secondItem="X75-ZL-0KI" secondAttribute="leading" priority="750" id="cGg-bU-lhv"/>
+                        <constraint firstAttribute="trailing" secondItem="e0N-Ta-Dm2" secondAttribute="trailing" priority="750" id="hBt-xd-QfG"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="121.88905547226388"/>
         </scene>
