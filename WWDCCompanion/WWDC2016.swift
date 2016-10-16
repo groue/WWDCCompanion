@@ -60,7 +60,7 @@ struct WWDC2016 {
                             do {
                                 let parsedSessionFromSessionPage = try page.session()
                                 try dbQueue.inDatabase { db in
-                                    try Session(
+                                    let session = Session(
                                         year: 2016,
                                         number: parsedSessionFromListPage.number,
                                         collection: parsedCollection.collection,
@@ -74,7 +74,8 @@ struct WWDC2016 {
                                         sessionURL: parsedSessionFromListPage.sessionURL,
                                         imageURL: parsedSessionFromListPage.imageURL,
                                         videoURL: parsedSessionFromSessionPage.videoURL,
-                                        presentationURL: parsedSessionFromSessionPage.presentationURL).save(db)
+                                        presentationURL: parsedSessionFromSessionPage.presentationURL)
+                                    try session.save(db)
                                 }
                                 progress.completedUnitCount += 1
                                 if progress.completedUnitCount == progress.totalUnitCount {

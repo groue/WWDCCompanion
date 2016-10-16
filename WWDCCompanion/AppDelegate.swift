@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  WWDCCompanion
-//
-//  Created by Gwendal Roué on 14/10/2016.
-//  Copyright © 2016 Gwendal Roué. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

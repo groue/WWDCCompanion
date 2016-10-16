@@ -1,11 +1,3 @@
-//
-//  Database.swift
-//  WWDCCompanion
-//
-//  Created by Gwendal Roué on 14/10/2016.
-//  Copyright © 2016 Gwendal Roué. All rights reserved.
-//
-
 import GRDBCustomSQLite
 import UIKit
 
@@ -38,10 +30,10 @@ func setupDatabase(_ application: UIApplication) throws {
             t.primaryKey(["year", "number"])
             t.column("year", .integer).notNull()
             t.column("number", .integer).notNull()
-            t.column("collection", .text).notNull().check { length($0) > 0 }
-            t.column("title", .text).notNull().check { length($0) > 0 }
-            t.column("description", .text).notNull().check { length($0) > 0 }
-            t.column("transcript", .text).notNull().check { length($0) > 0 }
+            t.column("collection", .text).notNull()
+            t.column("title", .text).notNull()
+            t.column("description", .text).notNull()
+            t.column("transcript", .text).notNull()
             t.column("iOS", .boolean).notNull()
             t.column("macOS", .boolean).notNull()
             t.column("tvOS", .boolean).notNull()
@@ -53,8 +45,14 @@ func setupDatabase(_ application: UIApplication) throws {
         }
         
         try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
-            t.synchronize(withTable: "sessions")
+            // Porter tokenizer provides English stemming
             t.tokenizer = .porter()
+            
+            // Index the content of the sessions table
+            // See https://github.com/groue/GRDB.swift#external-content-full-text-tables
+            t.synchronize(withTable: "sessions")
+            
+            // The indexed columns
             t.column("title")
             t.column("transcript")
             t.column("description")

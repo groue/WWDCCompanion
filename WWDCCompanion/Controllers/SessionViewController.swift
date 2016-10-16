@@ -1,11 +1,3 @@
-//
-//  SessionViewController.swift
-//  WWDCCompanion
-//
-//  Created by Gwendal Roué on 15/10/2016.
-//  Copyright © 2016 Gwendal Roué. All rights reserved.
-//
-
 import UIKit
 import WebKit
 import Mustache
@@ -17,11 +9,7 @@ class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let config = WKWebViewConfiguration()
-        config.allowsAirPlayForMediaPlayback = true
-        config.allowsInlineMediaPlayback = true
-        config.allowsPictureInPictureMediaPlayback = true
-        webView = WKWebView(frame: view.bounds, configuration: config)
+        webView = WKWebView(frame: view.bounds)
         webView.translatesAutoresizingMaskIntoConstraints = true
         webView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
@@ -31,7 +19,7 @@ class SessionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let transcriptSentences = session
+        let transcriptParagraphs = session
             .transcript
             .characters
             .split(separator: "\n")
@@ -42,7 +30,7 @@ class SessionViewController: UIViewController {
             "sessionImageURL": session.imageURL.absoluteString,
             "title": session.title,
             "focuses": session.focuses,
-            "transcriptSentences": transcriptSentences,
+            "transcriptParagraphs": transcriptParagraphs,
             ])
         let html = try! template.render(templateValue)
         webView.loadHTMLString(html, baseURL: nil)

@@ -1,15 +1,8 @@
-//
-//  SearchResultsTableViewController.swift
-//  WWDCCompanion
-//
-//  Created by Gwendal Roué on 15/10/2016.
-//  Copyright © 2016 Gwendal Roué. All rights reserved.
-//
-
 import UIKit
 import GRDBCustomSQLite
 
-class SessionWithSnippet : Session {
+/// A subclass of Sessions that holds a search result snippet
+private class SessionWithSnippet : Session {
     var snippet: String
     
     required init(row: Row) {
@@ -18,7 +11,13 @@ class SessionWithSnippet : Session {
     }
 }
 
-class SearchResultsTableViewController: UITableViewController {
+/// The search results controller
+class SearchResultsTableViewController: UITableViewController, UISearchResultsUpdating {
+    
+    /// Use FetchedRecordsController to keep the list of search results
+    /// synchronized with the content of the database.
+    ///
+    /// See https://github.com/groue/GRDB.swift#fetchedrecordscontroller
     private var sessionsController: FetchedRecordsController<SessionWithSnippet>!
     
     var selectedSession: Session? {
@@ -30,30 +29,23 @@ class SearchResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // sessions
+        // Initialize sessionsController with an empty request.
+        // The request will be updated in updateSearchResults(for:).
         let request = SessionWithSnippet.filter(false)
         sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        
+        // Update table view as the content of the request changes
+        // See https://github.com/groue/GRDB.swift#implementing-table-view-updates
         sessionsController.trackChanges { [unowned self] _ in
             self.tableView.reloadData()
         }
+        
+        // Fetch sessions and start tracking
         sessionsController.performFetch()
         
-        // tableview autolayout
+        // Table view autolayout
         tableView.estimatedRowHeight = 62
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    func setQueryString(_ string: String?) {
-        guard let pattern = string.flatMap({ FTS5Pattern(matchingAnyTokenIn: $0) }) else {
-            sessionsController.setRequest(SessionWithSnippet.filter(false))
-            return
-        }
-        
-        sessionsController.setRequest(sql:
-            "SELECT sessions.*, SNIPPET(fullTextSessions, -1, '<b>', '</b>', '…', 15) AS snippet " +
-            "FROM sessions, fullTextSessions " +
-            "WHERE fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
-            "ORDER BY RANK", arguments: [pattern])
     }
     
     // MARK: - Table view data source
@@ -68,18 +60,21 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
-        configure(cell: cell, at: indexPath)
+        configure(cell, at: indexPath)
         return cell
     }
     
-    private func configure(cell: SearchResultTableViewCell, at indexPath: IndexPath) {
+    private func configure(_ cell: SearchResultTableViewCell, at indexPath: IndexPath) {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
         cell.sessionImageURL = session.imageURL
         cell.focusesLabel.text = session.focuses
         
-        let font = cell.snippetLabel.font ?? UIFont.systemFont(ofSize: 17)
-        let htmlSnippet = "<style>span{font-family: \"\(font.familyName)\"; font-size: \(font.pointSize)px; color: #888;} b{font-weight: normal; color: #000;}</style><span>\(session.snippet)</span>"
+        // The snippet returned by SQLite wraps matched words in <b> html tags.
+        // Turn those tags into an NSAttributedString.
+        let snippet = session.snippet
+        let font = cell.snippetLabel.font!
+        let htmlSnippet = "<style>span{font-family: \"\(font.familyName)\"; font-size: \(font.pointSize)px; color: #888;} b{font-weight: normal; color: #000;}</style><span>\(snippet)</span>"
         if let data = htmlSnippet.data(using: .utf8),
             let attributedSnippet = try? NSAttributedString(
                 data: data,
@@ -89,19 +84,37 @@ class SearchResultsTableViewController: UITableViewController {
                 documentAttributes: nil)
         {
             cell.snippetLabel.attributedText = attributedSnippet
+        } else {
+            cell.snippetLabel.text = nil
         }
     }
     
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Let the SessionsTableViewController present the session
         self.presentingViewController?.performSegue(withIdentifier: "ShowSession", sender: self)
     }
-}
-
-extension SearchResultsTableViewController : UISearchResultsUpdating {
     
+    // MARK: - UISearchResultsUpdating
+    
+    /// Part of the UISearchResultsUpdating protocol
     func updateSearchResults(for searchController: UISearchController) {
-        setQueryString(searchController.searchBar.text)
+        // Turn the user query into a search pattern, and update
+        // sessionsController's request.
+        if let queryString = searchController.searchBar.text,
+            let pattern = FTS5Pattern(matchingAnyTokenIn: queryString)
+        {
+            // Valid pattern: full-text search
+            let sql = "SELECT sessions.*, SNIPPET(fullTextSessions, -1, '<b>', '</b>', '…', 15) AS snippet " +
+                "FROM sessions, fullTextSessions " +
+                "WHERE fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
+            "ORDER BY RANK"
+            sessionsController.setRequest(sql: sql, arguments: [pattern])
+        } else {
+            // No pattern: empty the search results
+            sessionsController.setRequest(SessionWithSnippet.filter(false))
+        }
     }
+    
 }

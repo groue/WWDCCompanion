@@ -290,7 +290,6 @@
 				566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */,
 				566D9B341DB1EF5A009CEA56 /* Resources */,
 				566D9A181DB0AE0F009CEA56 /* Info.plist */,
-				566D9AB21DB0F542009CEA56 /* Frameworks */,
 			);
 			path = WWDCCompanion;
 			sourceTree = "<group>";
@@ -337,14 +336,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		566D9AB21DB0F542009CEA56 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		566D9B271DB1EBD4009CEA56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +378,7 @@
 		EACA5C496B81AC48146252AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
 				1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */,
 			);
 			name = Frameworks;

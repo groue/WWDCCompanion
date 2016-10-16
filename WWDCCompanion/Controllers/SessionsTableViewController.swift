@@ -1,42 +1,63 @@
-//
-//  SessionsTableViewController.swift
-//  WWDCCompanion
-//
-//  Created by Gwendal Roué on 15/10/2016.
-//  Copyright © 2016 Gwendal Roué. All rights reserved.
-//
-
 import UIKit
 import GRDBCustomSQLite
 
 class SessionsTableViewController: UITableViewController {
     @IBOutlet private var downloadBarButtonItem: UIBarButtonItem!
-    private var sessionsController: FetchedRecordsController<Session>!
     private var searchController: UISearchController!
+    
+    /// Use FetchedRecordsController to keep the list of sessions
+    /// synchronized with the content of the database.
+    ///
+    /// See https://github.com/groue/GRDB.swift#fetchedrecordscontroller
+    private var sessionsController: FetchedRecordsController<Session>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // sessions
+        // Initialize sessionsController
         let request = Session.order(Column("year").desc, Column("number").asc)
         sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
-        sessionsController.trackChanges { [unowned self] _ in
-            self.tableView.reloadData()
-        }
+        
+        // Update table view as the content of the request changes
+        // See https://github.com/groue/GRDB.swift#implementing-table-view-updates
+        sessionsController.trackChanges(
+            recordsWillChange: { [unowned self] _ in
+                self.tableView.beginUpdates()
+            },
+            tableViewEvent: { [unowned self] (controller, record, event) in
+                switch event {
+                case .insertion(let indexPath):
+                    self.tableView.insertRows(at: [indexPath], with: .fade)
+                case .deletion(let indexPath):
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                case .update(let indexPath, _):
+                    if let cell = self.tableView.cellForRow(at: indexPath) as? SessionTableViewCell {
+                        self.configure(cell, at: indexPath)
+                    }
+                case .move(let indexPath, let newIndexPath, _):
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    self.tableView.insertRows(at: [newIndexPath], with: .fade)
+                }
+            },
+            recordsDidChange: { [unowned self] _ in
+                self.tableView.endUpdates()
+        })
+        
+        // Fetch sessions and start tracking
         sessionsController.performFetch()
         
-        // tableview autolayout
+        // Table view autolayout
         tableView.estimatedRowHeight = 62
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // search controller
+        // Search controller
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "SearchResultsTableViewController") as! SearchResultsTableViewController
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = searchResultsController
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
         
-        // back button
+        // Title and back button
         self.navigationItem.title = NSLocalizedString("WWDC Companion", comment: "")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sessions", comment: ""), style: .plain, target: nil, action: nil)
     }
@@ -44,11 +65,12 @@ class SessionsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Download sessions if needed
         if sessionsController.sections.count == 0 || sessionsController.sections[0].numberOfRecords == 0 {
             download()
         }
         
-        // necessary for automatic row deselection in the search results
+        // This is necessary for automatic row deselection in the search results
         if searchController.isActive {
             searchController.searchResultsController?.viewWillAppear(animated)
         }
@@ -66,11 +88,11 @@ class SessionsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionTableViewCell", for: indexPath) as! SessionTableViewCell
-        configure(cell: cell, at: indexPath)
+        configure(cell, at: indexPath)
         return cell
     }
     
-    private func configure(cell: SessionTableViewCell, at indexPath: IndexPath) {
+    private func configure(_ cell: SessionTableViewCell, at indexPath: IndexPath) {
         let session = sessionsController.record(at: indexPath)
         cell.titleLabel.text = session.title
         cell.sessionImageURL = session.imageURL
