@@ -11,7 +11,7 @@ It shows how to:
 
 - **Perform full-text search** in an SQLite database with [GRDB.swift](http://github.com/groue/GRDB.swift)
     - [Database.swift](WWDCCompanion/Models/Database.swift) initializes the SQLite database.
-    - [Session](WWDCCompanion/Models/Session.swift) is the GRDB record that allows fetching and saving WWDC sessions in the database.
+    - [Session](WWDCCompanion/Models/Session.swift) is the GRDB [record](https://github.com/groue/GRDB.swift#records) that allows fetching and saving WWDC sessions in the database.
     - [SessionsTableViewController](WWDCCompanion/Controllers/SessionsTableViewController.swift) synchronizes its table view with the content of the database with a [fetched records controller](https://github.com/groue/GRDB.swift#fetchedrecordscontroller).
     - [SearchResultsTableViewController](WWDCCompanion/Controllers/SearchResultsTableViewController.swift) performs full-text search.
     
