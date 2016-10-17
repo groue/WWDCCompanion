@@ -31,7 +31,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
         
         // Initialize sessionsController with an empty request.
         // The request will be updated in updateSearchResults(for:).
-        let request = SessionWithSnippet.filter(false)
+        let request = SessionWithSnippet.none()
         sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
         
         // Update table view as the content of the request changes
@@ -107,13 +107,13 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
         {
             // Valid pattern: full-text search
             let sql = "SELECT sessions.*, SNIPPET(fullTextSessions, -1, '<b>', '</b>', '…', 15) AS snippet " +
-                "FROM sessions, fullTextSessions " +
-                "WHERE fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
+                "FROM sessions " +
+                "JOIN fullTextSessions ON fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
             "ORDER BY RANK"
             sessionsController.setRequest(sql: sql, arguments: [pattern])
         } else {
             // No pattern: empty the search results
-            sessionsController.setRequest(SessionWithSnippet.filter(false))
+            sessionsController.setRequest(SessionWithSnippet.none())
         }
     }
     
