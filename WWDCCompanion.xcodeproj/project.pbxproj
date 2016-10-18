@@ -196,6 +196,10 @@
 		1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WWDCCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WWDCCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WWDCCompanion/Pods-WWDCCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 		56071A051DB27B1400CA6E47 /* session.html.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = session.html.mustache; sourceTree = "<group>"; };
+		56071A521DB5CB6300CA6E47 /* GRDBCustomSQLite-USER.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GRDBCustomSQLite-USER.h"; sourceTree = "<group>"; };
+		56071A531DB5CB6300CA6E47 /* GRDBCustomSQLite-USER.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "GRDBCustomSQLite-USER.xcconfig"; sourceTree = "<group>"; };
+		56071A541DB5CB6300CA6E47 /* setup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup.sh; sourceTree = "<group>"; };
+		56071A551DB5CB6300CA6E47 /* SQLiteLib-USER.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SQLiteLib-USER.xcconfig"; sourceTree = "<group>"; };
 		566D9A091DB0AE0F009CEA56 /* WWDCCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDCCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566D9A0C1DB0AE0F009CEA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566D9A111DB0AE0F009CEA56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,6 +259,17 @@
 				EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		56071A511DB5CB6300CA6E47 /* GRDBCustomSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				56071A541DB5CB6300CA6E47 /* setup.sh */,
+				56071A521DB5CB6300CA6E47 /* GRDBCustomSQLite-USER.h */,
+				56071A531DB5CB6300CA6E47 /* GRDBCustomSQLite-USER.xcconfig */,
+				56071A551DB5CB6300CA6E47 /* SQLiteLib-USER.xcconfig */,
+			);
+			path = GRDBCustomSQLite;
 			sourceTree = "<group>";
 		};
 		566D9A001DB0AE0F009CEA56 = {
@@ -379,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */,
+				56071A511DB5CB6300CA6E47 /* GRDBCustomSQLite */,
 				1051CBDCDB7BBC0BD94DDDC5 /* Pods_WWDCCompanion.framework */,
 			);
 			name = Frameworks;

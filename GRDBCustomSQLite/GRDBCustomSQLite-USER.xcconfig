@@ -1,0 +1,14 @@
+// GRDB configuration
+//
+// Convert CUSTOM_SQLLIBRARY_CFLAGS set in the SQLiteLib-USER.xcconfig to
+// OTHER_SWIFT_FLAGS by adding a space after the "-D"
+//
+//  Example:
+//
+// // In SQLiteLib-USER.xcconfig
+// CUSTOM_SQLLIBRARY_CFLAGS = -DSQLITE_ENABLE_PREUPDATE_HOOK
+//
+// // In GRDBCustomSQLite-USER.xcconfig:
+// CUSTOM_OTHER_SWIFT_FLAGS = -D SQLITE_ENABLE_PREUPDATE_HOOK
+
+CUSTOM_OTHER_SWIFT_FLAGS = -D SQLITE_ENABLE_FTS5
