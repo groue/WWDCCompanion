@@ -1,25 +1,15 @@
 PODS:
   - Fuzi (1.0.0)
-  - GRMustache.swift (1.1.0)
+  - GRMustache.swift (2.0.0)
 
 DEPENDENCIES:
   - Fuzi (~> 1.0.0)
-  - GRMustache.swift (from `https://github.com/groue/GRMustache.swift.git`, branch `Swift3`)
-
-EXTERNAL SOURCES:
-  GRMustache.swift:
-    :branch: Swift3
-    :git: https://github.com/groue/GRMustache.swift.git
-
-CHECKOUT OPTIONS:
-  GRMustache.swift:
-    :commit: 46d26696bcf37158ce9f46cb1250cfb26ed19adc
-    :git: https://github.com/groue/GRMustache.swift.git
+  - GRMustache.swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
   Fuzi: e88177b7cfdf3aa2b828c096c73551232a7f5c72
-  GRMustache.swift: 6bc0a640ddc833e38a05d02fe9ed8b6c98491989
+  GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
 
-PODFILE CHECKSUM: 21ed888ab7c40646055091c8986833571d5f562d
+PODFILE CHECKSUM: 8cb5d4d4bbad401d3bef0d809570df82ec23fee5
 
-COCOAPODS: 1.1.0.rc.3
+COCOAPODS: 1.1.0

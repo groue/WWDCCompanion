@@ -21,35 +21,26 @@
 // THE SOFTWARE.
 
 
-import Foundation
+@available(*, unavailable, message:"Use nil instead.")
+public func Box() -> MustacheBox { return EmptyBox }
 
-/// VariableTag represents a variable tag such as {{name}} or {{{name}}}.
-final class VariableTag: LocatedTag {
-    let token: TemplateToken
-    let contentType: ContentType
+extension Template {
+    @available(*, unavailable, renamed:"register(_:forKey:)")
+    public func registerInBaseContext(_ key: String, _ value: Any?) { }
+}
+
+extension Context {
+    @available(*, unavailable, renamed:"mustacheBox(forKey:)")
+    public func mustacheBoxForKey(_ key: String) -> MustacheBox { return EmptyBox }
     
-    init(contentType: ContentType, token: TemplateToken) {
-        self.contentType = contentType
-        self.token = token
-    }
+    @available(*, unavailable, renamed:"mustacheBox(forExpression:)")
+    public func mustacheBoxForExpression(_ string: String) throws -> MustacheBox { return EmptyBox }
     
-    // Mark: - Tag protocol
-    
-    let type: TagType = .variable
-    let innerTemplateString: String = ""
-    var tagDelimiterPair: TagDelimiterPair { return token.tagDelimiterPair! }
-    
-    var description: String {
-        return "\(token.templateSubstring) at \(token.locationDescription)"
-    }
-    
-    // Variable have no inner content.
-    func render(_ context: Context) throws -> Rendering {
-        return Rendering("", contentType)
-    }
-    
-    // Mark: - LocatedTag
-    
-    var templateID: TemplateID? { return token.templateID }
-    var lineNumber: Int { return token.lineNumber }
+    @available(*, unavailable, renamed:"extendedContext(withRegisteredValue:forKey:)")
+    func contextWithRegisteredKey(_ key: String, box: MustacheBox) -> Context { return self }
+}
+
+extension MustacheBox {
+    @nonobjc @available(*, unavailable, renamed:"mustacheBox(forKey:)")
+    public func mustacheBoxForKey(_ key: String) -> MustacheBox { return EmptyBox }
 }

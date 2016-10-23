@@ -40,12 +40,12 @@ struct ExpressionInvocation {
         case .identifier(let identifier):
             // {{ identifier }}
             
-            return context.mustacheBoxForKey(identifier)
+            return context.mustacheBox(forKey: identifier)
 
         case .scoped(let baseExpression, let identifier):
             // {{ <expression>.identifier }}
             
-            return try evaluate(context: context, expression: baseExpression).mustacheBoxForKey(identifier)
+            return try evaluate(context: context, expression: baseExpression).mustacheBox(forKey: identifier)
             
         case .filter(let filterExpression, let argumentExpression, let partialApplication):
             // {{ <expression>(<expression>) }}
@@ -61,7 +61,7 @@ struct ExpressionInvocation {
             }
             
             let argumentBox = try evaluate(context: context, expression: argumentExpression)
-            return try filter(argumentBox, partialApplication)
+            return try Box(filter(argumentBox, partialApplication))
         }
     }
 }

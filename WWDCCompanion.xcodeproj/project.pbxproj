@@ -891,7 +891,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;
@@ -906,7 +905,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;

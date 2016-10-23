@@ -30,21 +30,21 @@ class SessionViewController: UIViewController {
         let title1Font = UIFont.preferredFont(forTextStyle: .title1)
         
         let template = try! Template(named: "session.html")
-        let templateValue = Box([
+        let templateValue: [String : Any] = [
             "calloutFont": [
                 "name": calloutFont.familyName,
-                "size": Double(calloutFont.pointSize)], // GRMustache supports Double, but not CGFloat
+                "size": calloutFont.pointSize],
             "bodyFont": [
                 "name": bodyFont.familyName,
-                "size": Double(bodyFont.pointSize)],
+                "size": bodyFont.pointSize],
             "title1Font": [
                 "name": title1Font.familyName,
-                "size": Double(title1Font.pointSize)],
+                "size": title1Font.pointSize],
             "sessionImageURL": session.imageURL.absoluteString,
             "title": session.title,
             "focuses": session.focuses,
             "transcriptParagraphs": transcriptParagraphs,
-            ])
+            ]
         let html = try! template.render(templateValue)
         webView.loadHTMLString(html, baseURL: nil)
     }
