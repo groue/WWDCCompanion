@@ -1,5 +1,5 @@
 PODS:
-  - Fuzi (1.0.0)
+  - Fuzi (1.0.1)
   - GRMustache.swift (2.0.0)
 
 DEPENDENCIES:
@@ -7,9 +7,9 @@ DEPENDENCIES:
   - GRMustache.swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  Fuzi: e88177b7cfdf3aa2b828c096c73551232a7f5c72
+  Fuzi: 851403654bac55675aaeed815d0c8a1d3e3d3e8b
   GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
 
 PODFILE CHECKSUM: 8cb5d4d4bbad401d3bef0d809570df82ec23fee5
 
-COCOAPODS: 1.1.0
+COCOAPODS: 1.1.1

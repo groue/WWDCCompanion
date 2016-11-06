@@ -68,7 +68,7 @@ class SessionsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         // Download sessions if needed
-        if sessionsController.sections.count == 0 || sessionsController.sections[0].numberOfRecords == 0 {
+        if sessionsController.sections[0].numberOfRecords == 0 {
             download()
         }
         
