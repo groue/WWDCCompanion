@@ -32,7 +32,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
         // Initialize sessionsController with an empty request.
         // The request will be updated in updateSearchResults(for:).
         let request = SessionWithSnippet.none()
-        sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        sessionsController = try! FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
         
         // Update table view as the content of the request changes
         // See https://github.com/groue/GRDB.swift#implementing-table-view-updates
@@ -41,7 +41,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
         }
         
         // Fetch sessions and start tracking
-        sessionsController.performFetch()
+        try! sessionsController.performFetch()
         
         // Table view autolayout
         tableView.estimatedRowHeight = 62
@@ -110,10 +110,10 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
                 "FROM sessions " +
                 "JOIN fullTextSessions ON fullTextSessions.rowid = sessions.rowid AND fullTextSessions MATCH ? " +
             "ORDER BY RANK"
-            sessionsController.setRequest(sql: sql, arguments: [pattern])
+            try! sessionsController.setRequest(sql: sql, arguments: [pattern])
         } else {
             // No pattern: empty the search results
-            sessionsController.setRequest(SessionWithSnippet.none())
+            try! sessionsController.setRequest(SessionWithSnippet.none())
         }
     }
     

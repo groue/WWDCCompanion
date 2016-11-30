@@ -18,7 +18,7 @@ class SessionsTableViewController: UITableViewController {
         
         // Initialize sessionsController
         let request = Session.order(Column("year").desc, Column("number").asc)
-        sessionsController = FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        sessionsController = try! FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
         
         // Update table view as the content of the request changes
         // See https://github.com/groue/GRDB.swift#implementing-table-view-updates
@@ -46,7 +46,7 @@ class SessionsTableViewController: UITableViewController {
         })
         
         // Fetch sessions and start tracking
-        sessionsController.performFetch()
+        try! sessionsController.performFetch()
         
         // Table view autolayout
         tableView.estimatedRowHeight = 62
