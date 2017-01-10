@@ -32,7 +32,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
         // Initialize sessionsController with an empty request.
         // The request will be updated in updateSearchResults(for:).
         let request = SessionWithSnippet.none()
-        sessionsController = try! FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        sessionsController = try! FetchedRecordsController(dbQueue, request: request)
         
         // Update table view as the content of the request changes
         // See https://github.com/groue/GRDB.swift#implementing-table-view-updates

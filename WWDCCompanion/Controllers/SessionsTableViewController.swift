@@ -18,16 +18,16 @@ class SessionsTableViewController: UITableViewController {
         
         // Initialize sessionsController
         let request = Session.order(Column("year").desc, Column("number").asc)
-        sessionsController = try! FetchedRecordsController(dbQueue, request: request, compareRecordsByPrimaryKey: true)
+        sessionsController = try! FetchedRecordsController(dbQueue, request: request)
         
         // Update table view as the content of the request changes
         // See https://github.com/groue/GRDB.swift#implementing-table-view-updates
         sessionsController.trackChanges(
-            recordsWillChange: { [unowned self] _ in
+            willChange: { [unowned self] _ in
                 self.tableView.beginUpdates()
             },
-            tableViewEvent: { [unowned self] (controller, record, event) in
-                switch event {
+            onChange: { [unowned self] (controller, record, change) in
+                switch change {
                 case .insertion(let indexPath):
                     self.tableView.insertRows(at: [indexPath], with: .fade)
                 case .deletion(let indexPath):
@@ -41,7 +41,7 @@ class SessionsTableViewController: UITableViewController {
                     self.tableView.insertRows(at: [newIndexPath], with: .fade)
                 }
             },
-            recordsDidChange: { [unowned self] _ in
+            didChange: { [unowned self] _ in
                 self.tableView.endUpdates()
         })
         
