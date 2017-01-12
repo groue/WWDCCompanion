@@ -7,6 +7,20 @@ WWDC Companion
 | :-----: | :-----: | :-----: | :-----: |
 | ![Screen shot 1](Images/Screen1.png) | ![Screen shot 2](Images/Screen2.png) | ![Screen shot 3](Images/Screen3.png) | ![Screen shot 4](Images/Screen4.png) |
 
+To run the app:
+
+- Clone the WWDCCompanion repository
+- Execute:
+    
+    ```sh
+    cd WWDCCompanion
+    git submodule update --init GRDB
+    cd GRDB
+    git submodule update --init SQLiteCustom/src
+    ```
+- Open WWDCCompanion.xcworkspace
+- Run the WWDCCompanion target
+
 It shows how to:
 
 - **Perform full-text search** in an SQLite database with [GRDB.swift](http://github.com/groue/GRDB.swift)
