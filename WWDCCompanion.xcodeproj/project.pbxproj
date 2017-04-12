@@ -331,19 +331,19 @@
 			isa = PBXGroup;
 			children = (
 				566D9A541DB0B274009CEA56 /* GRDB.framework */,
-				566D9A561DB0B274009CEA56 /* GRDBTests.xctest */,
+				566D9A561DB0B274009CEA56 /* GRDBOSXTests.xctest */,
 				566D9A581DB0B274009CEA56 /* GRDBOSXPerformanceTests.xctest */,
 				566D9A5A1DB0B274009CEA56 /* GRDBOSXCrashTests.xctest */,
 				566D9A5C1DB0B274009CEA56 /* GRDBCipher.framework */,
-				566D9A5E1DB0B274009CEA56 /* GRDBTests.xctest */,
+				566D9A5E1DB0B274009CEA56 /* GRDBCipherOSXTests.xctest */,
 				566D9A601DB0B274009CEA56 /* GRDBCipherOSXEncryptedTests.xctest */,
 				566D9A621DB0B274009CEA56 /* GRDBCustomSQLite.framework */,
 				566D9A641DB0B274009CEA56 /* GRDBCustomSQLiteOSXTests.xctest */,
 				566D9A661DB0B274009CEA56 /* GRDB.framework */,
-				566D9A681DB0B274009CEA56 /* GRDBTests.xctest */,
+				566D9A681DB0B274009CEA56 /* GRDBiOSTests.xctest */,
 				566D9A6A1DB0B274009CEA56 /* GRDBCipher.framework */,
-				566D9A6C1DB0B274009CEA56 /* GRDBTests.xctest */,
-				566D9A6E1DB0B274009CEA56 /* GRDBTests.xctest */,
+				566D9A6C1DB0B274009CEA56 /* GRDBCipheriOSTests.xctest */,
+				566D9A6E1DB0B274009CEA56 /* GRDBCipheriOSEncryptedTests.xctest */,
 				566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */,
 				566D9A721DB0B274009CEA56 /* GRDBCustomSQLiteiOSTests.xctest */,
 				566D9A741DB0B274009CEA56 /* GRDB.framework */,
@@ -469,7 +469,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Gwendal Roué";
 				TargetAttributes = {
 					566D9A081DB0AE0F009CEA56 = {
@@ -525,10 +525,10 @@
 			remoteRef = 566D9A531DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		566D9A561DB0B274009CEA56 /* GRDBTests.xctest */ = {
+		566D9A561DB0B274009CEA56 /* GRDBOSXTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GRDBTests.xctest;
+			path = GRDBOSXTests.xctest;
 			remoteRef = 566D9A551DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -553,10 +553,10 @@
 			remoteRef = 566D9A5B1DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		566D9A5E1DB0B274009CEA56 /* GRDBTests.xctest */ = {
+		566D9A5E1DB0B274009CEA56 /* GRDBCipherOSXTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GRDBTests.xctest;
+			path = GRDBCipherOSXTests.xctest;
 			remoteRef = 566D9A5D1DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -588,10 +588,10 @@
 			remoteRef = 566D9A651DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		566D9A681DB0B274009CEA56 /* GRDBTests.xctest */ = {
+		566D9A681DB0B274009CEA56 /* GRDBiOSTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GRDBTests.xctest;
+			path = GRDBiOSTests.xctest;
 			remoteRef = 566D9A671DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -602,17 +602,17 @@
 			remoteRef = 566D9A691DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		566D9A6C1DB0B274009CEA56 /* GRDBTests.xctest */ = {
+		566D9A6C1DB0B274009CEA56 /* GRDBCipheriOSTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GRDBTests.xctest;
+			path = GRDBCipheriOSTests.xctest;
 			remoteRef = 566D9A6B1DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		566D9A6E1DB0B274009CEA56 /* GRDBTests.xctest */ = {
+		566D9A6E1DB0B274009CEA56 /* GRDBCipheriOSEncryptedTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GRDBTests.xctest;
+			path = GRDBCipheriOSEncryptedTests.xctest;
 			remoteRef = 566D9A6D1DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -891,6 +891,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1473BDF0B585EEEDA61977D0 /* Pods-WWDCCompanion.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;
@@ -905,6 +906,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAFE63148364053149804619 /* Pods-WWDCCompanion.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMD8W895CT;
 				INFOPLIST_FILE = WWDCCompanion/Info.plist;
