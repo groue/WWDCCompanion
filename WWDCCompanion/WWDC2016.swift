@@ -44,7 +44,7 @@ struct WWDC2016 {
             let page = SessionListPage(data: data, baseURL: listURL)
             do {
                 let collections = try page.collections()
-                progress.totalUnitCount = collections.map { $0.sessions.count }.reduce(0, +)
+                progress.totalUnitCount = Int64(collections.map { $0.sessions.count }.reduce(0, +))
                 for parsedCollection in try page.collections() {
                     for parsedSessionFromListPage in parsedCollection.sessions {
                         let sessionURL = parsedSessionFromListPage.sessionURL
