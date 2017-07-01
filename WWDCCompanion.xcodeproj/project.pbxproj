@@ -17,7 +17,7 @@
 		566D9A2D1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9A2C1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift */; };
 		566D9A8F1DB0B304009CEA56 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; };
 		566D9A901DB0B304009CEA56 /* GRDBCustomSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 566D9A701DB0B274009CEA56 /* GRDBCustomSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */; };
+		566D9AAC1DB0F1EB009CEA56 /* WWDC2017.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9AAB1DB0F1EB009CEA56 /* WWDC2017.swift */; };
 		566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B291DB1EBD4009CEA56 /* Database.swift */; };
 		566D9B2C1DB1EBD4009CEA56 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2A1DB1EBD4009CEA56 /* Session.swift */; };
 		566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */; };
@@ -213,7 +213,7 @@
 		566D9A2C1DB0AE0F009CEA56 /* WWDCCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCCompanionUITests.swift; sourceTree = "<group>"; };
 		566D9A2E1DB0AE0F009CEA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GRDB.xcodeproj; path = GRDB/GRDB.xcodeproj; sourceTree = SOURCE_ROOT; };
-		566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWDC2016.swift; sourceTree = "<group>"; };
+		566D9AAB1DB0F1EB009CEA56 /* WWDC2017.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWDC2017.swift; sourceTree = "<group>"; };
 		566D9B291DB1EBD4009CEA56 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		566D9B2A1DB1EBD4009CEA56 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		566D9B2D1DB1EBFD009CEA56 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 				566D9B281DB1EBD4009CEA56 /* Models */,
 				566D9B311DB1EF05009CEA56 /* Views */,
 				566D9B391DB253E9009CEA56 /* ImageCache.swift */,
-				566D9AAB1DB0F1EB009CEA56 /* WWDC2016.swift */,
+				566D9AAB1DB0F1EB009CEA56 /* WWDC2017.swift */,
 				566D9B341DB1EF5A009CEA56 /* Resources */,
 				566D9A181DB0AE0F009CEA56 /* Info.plist */,
 			);
@@ -726,7 +726,7 @@
 				566D9B3E1DB26A87009CEA56 /* SessionViewController.swift in Sources */,
 				566D9B3A1DB253E9009CEA56 /* ImageCache.swift in Sources */,
 				566D9B2B1DB1EBD4009CEA56 /* Database.swift in Sources */,
-				566D9AAC1DB0F1EB009CEA56 /* WWDC2016.swift in Sources */,
+				566D9AAC1DB0F1EB009CEA56 /* WWDC2017.swift in Sources */,
 				566D9A0D1DB0AE0F009CEA56 /* AppDelegate.swift in Sources */,
 				566D9B361DB21895009CEA56 /* SearchResultsTableViewController.swift in Sources */,
 				566D9B2E1DB1EBFD009CEA56 /* SessionsTableViewController.swift in Sources */,

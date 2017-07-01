@@ -40,7 +40,7 @@ func setupDatabase(_ application: UIApplication) throws {
             t.column("watchOS", .boolean).notNull()
             t.column("sessionURL", .text).notNull()
             t.column("imageURL", .text).notNull()
-            t.column("videoURL", .text).notNull()
+            t.column("videoURL", .text)
             t.column("presentationURL", .text)
         }
         

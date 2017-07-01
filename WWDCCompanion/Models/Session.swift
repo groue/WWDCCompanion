@@ -13,7 +13,7 @@ class Session : Record {
     let watchOS: Bool
     let sessionURL: URL
     let imageURL: URL
-    let videoURL: URL
+    let videoURL: URL?
     let presentationURL: URL?
     
     var focuses: String {
@@ -26,7 +26,7 @@ class Session : Record {
 
     }
     
-    init(year: Int, number: Int, collection: String, title: String, description: String, transcript: String, iOS: Bool, macOS: Bool, tvOS: Bool, watchOS: Bool, sessionURL: URL, imageURL: URL, videoURL: URL, presentationURL: URL?) {
+    init(year: Int, number: Int, collection: String, title: String, description: String, transcript: String, iOS: Bool, macOS: Bool, tvOS: Bool, watchOS: Bool, sessionURL: URL, imageURL: URL, videoURL: URL?, presentationURL: URL?) {
         self.year = year
         self.number = number
         self.collection = collection

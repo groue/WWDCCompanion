@@ -128,7 +128,7 @@ class SessionsTableViewController: UITableViewController {
     // MARK: - Download
     
     @IBAction private func download() {
-        let progress = WWDC2016.download { [weak self] error in
+        let progress = WWDC2017.download { [weak self] error in
             guard let strongSelf = self else { return }
             
             if let error = error {

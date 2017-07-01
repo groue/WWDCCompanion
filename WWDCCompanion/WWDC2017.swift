@@ -21,7 +21,7 @@ struct ScrapingError : Error {
     }
 }
 
-struct WWDC2016 {
+struct WWDC2017 {
     static func download(completion: @escaping (Error?) -> ()) -> Progress {
         let session = URLSession(configuration: .default)
         let progress = Progress()
@@ -32,7 +32,7 @@ struct WWDC2016 {
             }
         }
         
-        let listURL = URL(string: "https://developer.apple.com/videos/wwdc2016/")!
+        let listURL = URL(string: "https://developer.apple.com/videos/wwdc2017/")!
         let listTask = session.dataTask(with: listURL) { (data, response, error) in
             guard let data = data else {
                 progress.cancel()
@@ -61,7 +61,7 @@ struct WWDC2016 {
                                 let parsedSessionFromSessionPage = try page.session()
                                 try dbQueue.inDatabase { db in
                                     let session = Session(
-                                        year: 2016,
+                                        year: 2017,
                                         number: parsedSessionFromListPage.number,
                                         collection: parsedCollection.collection,
                                         title: parsedSessionFromSessionPage.title,
@@ -170,7 +170,7 @@ private struct SessionPage {
         let title: String
         let description: String
         let transcript: String
-        let videoURL: URL
+        let videoURL: URL?
         let presentationURL: URL?
     }
     
@@ -190,33 +190,35 @@ private struct SessionPage {
                 paragraphElem.css("span").flatMap { $0.textPresence }.joined(separator: " ")
             }
             .joined(separator: "\n\n")
-        guard !transcript.isEmpty else { throw ScrapingError() }
         var videoURL: URL? = nil
         var presentationURL: URL? = nil
-        for resourceElem in supplementsElem.css("li.resources ul.links > li") {
+        for resourceElem in supplementsElem.css("li.supplement ul.links > li") {
             let resourceKind = resourceElem.attributes["class"]
             switch resourceKind {
-            case "video"?:
-                guard let anchorElem = resourceElem.firstChild(css: "a"),
+            case "download"?:
+                if let anchorElem = resourceElem.firstChild(css: "a"),
                     let urlString = anchorElem.attributes["href"],
-                    let URL = URL(string: urlString, relativeTo: baseURL) else { throw ScrapingError() }
-                videoURL = URL
+                    let URL = URL(string: urlString, relativeTo: baseURL)
+                {
+                    videoURL = URL
+                }
             case "document"?:
-                guard let anchorElem = resourceElem.firstChild(css: "a"),
+                if let anchorElem = resourceElem.firstChild(css: "a"),
                     let urlString = anchorElem.attributes["href"],
-                    let URL = URL(string: urlString, relativeTo: baseURL) else { throw ScrapingError() }
-                presentationURL = URL
+                    let URL = URL(string: urlString, relativeTo: baseURL)
+                {
+                    presentationURL = URL
+                }
             default:
                 break
             }
         }
-        guard videoURL != nil else { throw ScrapingError() }
         
         return ParsedSession(
             title: title,
             description: description,
             transcript: transcript,
-            videoURL: videoURL!,
+            videoURL: videoURL,
             presentationURL: presentationURL)
     }
 }

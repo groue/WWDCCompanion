@@ -1,7 +1,7 @@
 WWDC Companion
 ==============
 
-**This Swift 3 application stores, displays, and lets the user search the [WWDC 2016 sessions](https://developer.apple.com/videos/wwdc2016/).**
+**This Swift 3 application stores, displays, and lets the user search the [WWDC 2017 sessions](https://developer.apple.com/videos/wwdc2017/).**
 
 |         |         |         |         |
 | :-----: | :-----: | :-----: | :-----: |
