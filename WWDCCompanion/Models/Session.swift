@@ -66,22 +66,20 @@ class Session : Record {
         super.init(row: row)
     }
     
-    override var persistentDictionary: [String : DatabaseValueConvertible?] {
-        return [
-            "year": year,
-            "number": number,
-            "collection": collection,
-            "title": title,
-            "description": description,
-            "transcript": transcript,
-            "iOS": iOS,
-            "macOS": macOS,
-            "watchOS": watchOS,
-            "tvOS": tvOS,
-            "sessionURL": sessionURL,
-            "imageURL": imageURL,
-            "videoURL": videoURL,
-            "presentationURL": presentationURL,
-        ]
+    override func encode(to container: inout PersistenceContainer) {
+        container["year"] = year
+        container["number"] = number
+        container["collection"] = collection
+        container["title"] = title
+        container["description"] = description
+        container["transcript"] = transcript
+        container["iOS"] = iOS
+        container["macOS"] = macOS
+        container["watchOS"] = watchOS
+        container["tvOS"] = tvOS
+        container["sessionURL"] = sessionURL
+        container["imageURL"] = imageURL
+        container["videoURL"] = videoURL
+        container["presentationURL"] = presentationURL
     }
 }
