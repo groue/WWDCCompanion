@@ -49,20 +49,20 @@ class Session : Record {
     override class var databaseTableName: String { return "sessions" }
     
     required init(row: Row) {
-        year = row.value(named: "year")
-        number = row.value(named: "number")
-        collection = row.value(named: "collection")
-        title = row.value(named: "title")
-        description = row.value(named: "description")
-        transcript = row.value(named: "transcript")
-        iOS = row.value(named: "iOS")
-        macOS = row.value(named: "macOS")
-        tvOS = row.value(named: "tvOS")
-        watchOS = row.value(named: "watchOS")
-        sessionURL = row.value(named: "sessionURL")
-        imageURL = row.value(named: "imageURL")
-        videoURL = row.value(named: "videoURL")
-        presentationURL = row.value(named: "presentationURL")
+        year = row["year"]
+        number = row["number"]
+        collection = row["collection"]
+        title = row["title"]
+        description = row["description"]
+        transcript = row["transcript"]
+        iOS = row["iOS"]
+        macOS = row["macOS"]
+        tvOS = row["tvOS"]
+        watchOS = row["watchOS"]
+        sessionURL = row["sessionURL"]
+        imageURL = row["imageURL"]
+        videoURL = row["videoURL"]
+        presentationURL = row["presentationURL"]
         super.init(row: row)
     }
     

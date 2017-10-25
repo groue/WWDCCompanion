@@ -6,7 +6,7 @@ private class SessionWithSnippet : Session {
     var snippet: String
     
     required init(row: Row) {
-        snippet = row.value(named: "snippet")
+        snippet = row["snippet"]
         super.init(row: row)
     }
 }
@@ -79,8 +79,8 @@ class SearchResultsTableViewController: UITableViewController, UISearchResultsUp
             let attributedSnippet = try? NSAttributedString(
                 data: data,
                 options: [
-                    NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                    NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue],
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue],
                 documentAttributes: nil)
         {
             cell.snippetLabel.attributedText = attributedSnippet
