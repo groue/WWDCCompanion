@@ -176,6 +176,13 @@
 			remoteGlobalIDString = F3BA7FFD1CFB25E4003DC1BA;
 			remoteInfo = GRDBCustomSQLiteiOS;
 		};
+		56ABA5871FA0496B00C82F4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 566D9A3C1DB0B273009CEA56 /* GRDB.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 56439B501F4CA1DC0066043F;
+			remoteInfo = GRDBOSXPerformanceComparisonTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -333,6 +340,7 @@
 				566D9A541DB0B274009CEA56 /* GRDB.framework */,
 				566D9A561DB0B274009CEA56 /* GRDBOSXTests.xctest */,
 				566D9A581DB0B274009CEA56 /* GRDBOSXPerformanceTests.xctest */,
+				56ABA5881FA0496B00C82F4C /* GRDBOSXPerformanceComparisonTests.xctest */,
 				566D9A5A1DB0B274009CEA56 /* GRDBOSXCrashTests.xctest */,
 				566D9A5C1DB0B274009CEA56 /* GRDBCipher.framework */,
 				566D9A5E1DB0B274009CEA56 /* GRDBCipherOSXTests.xctest */,
@@ -637,6 +645,13 @@
 			remoteRef = 566D9A731DB0B274009CEA56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		56ABA5881FA0496B00C82F4C /* GRDBOSXPerformanceComparisonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GRDBOSXPerformanceComparisonTests.xctest;
+			remoteRef = 56ABA5871FA0496B00C82F4C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -898,7 +913,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.groue.WWDCCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -913,7 +928,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.groue.WWDCCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
