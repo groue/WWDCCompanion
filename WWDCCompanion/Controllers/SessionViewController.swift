@@ -21,7 +21,6 @@ class SessionViewController: UIViewController {
         
         let transcriptParagraphs = session
             .transcript
-            .characters
             .split(separator: "\n")
             .map { String($0) }
         

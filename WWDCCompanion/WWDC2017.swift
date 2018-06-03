@@ -7,10 +7,10 @@ extension XMLElement {
             .map({ $0.rawXML })
             .joined(separator: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        if text.characters.count > 0 {
-            return text
-        } else {
+        if text.isEmpty {
             return nil
+        } else {
+            return text
         }
     }
 }
@@ -142,9 +142,9 @@ private struct SessionListPage {
                     guard let focusesElem = sessionElem.firstChild(css: "section.col-70 ul.video-tags li.focus span") else { throw ScrapingError() }
                     let focuses: [String]
                     if let focusText = focusesElem.textPresence {
-                        focuses = focusText.characters
+                        focuses = focusText
                             .split(separator: ",")
-                            .map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+                            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                             .map { $0.lowercased() }
                     } else {
                         focuses = []
@@ -187,7 +187,7 @@ private struct SessionPage {
         let transcript = transcriptElem
             .css("p")
             .map { paragraphElem in
-                paragraphElem.css("span").flatMap { $0.textPresence }.joined(separator: " ")
+                paragraphElem.css("span").compactMap { $0.textPresence }.joined(separator: " ")
             }
             .joined(separator: "\n\n")
         var videoURL: URL? = nil
