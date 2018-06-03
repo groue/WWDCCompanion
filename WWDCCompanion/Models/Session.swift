@@ -1,6 +1,6 @@
 import GRDBCustomSQLite
 
-class Session : Record {
+class Session: Record {
     let year: Int
     let number: Int
     let collection: String
@@ -46,7 +46,7 @@ class Session : Record {
     
     // MARK: - Record
     
-    override class var databaseTableName: String { return "sessions" }
+    override class var databaseTableName: String { return "session" }
     
     required init(row: Row) {
         year = row["year"]

@@ -59,7 +59,7 @@ struct WWDC2017 {
                             let page = SessionPage(data: data, baseURL: sessionURL)
                             do {
                                 let parsedSessionFromSessionPage = try page.session()
-                                try dbQueue.inDatabase { db in
+                                try dbQueue.write { db in
                                     let session = Session(
                                         year: 2017,
                                         number: parsedSessionFromListPage.number,

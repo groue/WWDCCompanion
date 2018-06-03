@@ -24,9 +24,9 @@ func setupDatabase(_ application: UIApplication) throws {
     
     var migrator = DatabaseMigrator()
     
-    migrator.registerMigration("createWWDCSessions") { db in
+    migrator.registerMigration("createWWDCSession") { db in
         
-        try db.create(table: "sessions") { t in
+        try db.create(table: "session") { t in
             t.primaryKey(["year", "number"])
             t.column("year", .integer).notNull()
             t.column("number", .integer).notNull()
@@ -44,13 +44,13 @@ func setupDatabase(_ application: UIApplication) throws {
             t.column("presentationURL", .text)
         }
         
-        try db.create(virtualTable: "fullTextSessions", using: FTS5()) { t in
+        try db.create(virtualTable: "fullTextSession", using: FTS5()) { t in
             // Porter tokenizer provides English stemming
             t.tokenizer = .porter()
             
             // Index the content of the sessions table
             // See https://github.com/groue/GRDB.swift#external-content-full-text-tables
-            t.synchronize(withTable: "sessions")
+            t.synchronize(withTable: "session")
             
             // The indexed columns
             t.column("title")
